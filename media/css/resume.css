@@ -28,11 +28,13 @@ body > section > h1 {
 	body > section > h1 >section > h1 {
 		font-size:18px;
 	}
-	
-ul.taglist {
-	list-style-type:disc;
-}
 
 ul.taglist li {
 	float:left;
+	list-style-position:inside;
+	margin:0 10px 0 0;
+}
+
+ul.taglist li:before {
+	content:"·";
 }

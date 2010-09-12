@@ -4,7 +4,7 @@ body {
 	margin:50px auto;
 	font-family:Garamond, times, "times new roman", serif;
 	font-size:18px;
-	line-height:1.2;
+	line-height:1.3;
 }
 section {
 	clear:left;
@@ -53,7 +53,13 @@ body > section > h1 {
 	section > section > h1 span{
 		float:right;
 	}
+ul, p {
+	margin:.7em 0 0 0;
+}
 
+ul {
+	padding: 0 0 0 10px;
+}
 ul.taglist li {
 	float:left;
 	list-style-position:inside;

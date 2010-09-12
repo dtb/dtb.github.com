@@ -63,8 +63,11 @@ body > section > h1 {
 	section > section > h1 span{
 		float:right;
 	}
-ul, p {
+h1+ul, h1+p {
 	margin:.3em 0 0 0;
+}
+ul, p {
+	margin: .5em 0 0 0;
 }
 
 ul {
@@ -77,11 +80,14 @@ ul.taglist {
 ul.taglist li {
 	float:left;
 	list-style:none;
-	margin:0 10px 0 0;
 }
 
-ul.taglist li:before {
+ul.taglist li:after {
 	content:" · ";
+}
+
+ul.taglist li:last-child:after {
+	content:"";
 }
 
 #work-experience ul>li {

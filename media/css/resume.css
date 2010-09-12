@@ -94,8 +94,13 @@ ul.taglist li:last-child:after {
 #work-experience ul>li {
 	font-size:75%;
 }
+
 #work-experience ul>li .list-wrapper{
 	font-size:133.333%;
+}
+
+#work-experience .implementation {
+	color:rgb(171,170,149);
 }
 
 dd, dt { 

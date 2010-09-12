@@ -1,0 +1,5 @@
+@import url("c and l/fonts.css");
+
+body > h1 {
+    font-family: "ChampagneLimousinesRegular", "futura", sans-serif;
+}

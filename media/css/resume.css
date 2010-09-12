@@ -110,16 +110,16 @@ dt:after {
 	font-size:28px;
 }
 .taglist .skilled {
-	font-size:20px;
+	font-size:21px;
 	color:rgb(64,63,54);
 }
 
 .taglist .useful {
-	font-size:16px;
+	font-size:18px;
 	color: rgb(110,109,96);
 }
 
 .taglist .dabbled {
-	font-size:12px;
+	font-size:14px;
 	color:rgb(171,170,149);
 }

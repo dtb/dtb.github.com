@@ -16,6 +16,15 @@ body > header > h1 {
 	text-align:center;
 }
 
+body > header address {
+	display:inline;
+	margin-right:15%;
+}
+
+body > header span.email {
+	float:right;
+}
+
 	body > header > h1 .given-name,
 	body > header > h1 .family-name {
 		font-weight:bold;

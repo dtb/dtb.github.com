@@ -22,7 +22,7 @@ body > header > h1 {
 
 body > header span.adr {
 	display:inline;
-	margin-right:15%;
+	margin-right:12%;
 }
 
 body > header span.email {
@@ -63,22 +63,23 @@ body > section > h1 {
 	section > section > h1 span{
 		float:right;
 	}
-h1+ul, h1+p {
-	margin:.3em 0 0 0;
-}
 ul, p {
 	margin: .5em 0 0 0;
+}
+h1+ul, h1+p {
+	margin:.3em 0 0 0;
 }
 
 ul {
 	padding: 0 0 0 25px;
 	list-style:disc;
 }
+
 ul.taglist {
 	padding:0;
 }
 ul.taglist li {
-	float:left;
+	display:inline;
 	list-style:none;
 }
 
@@ -103,4 +104,22 @@ dd, dt {
 
 dt:after {
 	content: ": ";
+}
+
+.taglist .advanced {
+	font-size:28px;
+}
+.taglist .skilled {
+	font-size:20px;
+	color:rgb(64,63,54);
+}
+
+.taglist .useful {
+	font-size:16px;
+	color: rgb(110,109,96);
+}
+
+.taglist .dabbled {
+	font-size:12px;
+	color:rgb(171,170,149);
 }

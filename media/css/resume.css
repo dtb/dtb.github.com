@@ -39,5 +39,5 @@ ul.taglist li {
 }
 
 ul.taglist li:before {
-	content:"·";
+	content:" · ";
 }

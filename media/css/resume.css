@@ -13,11 +13,16 @@ section {
 body > header > h1 {
 	font-family: "ChampagneLimousinesRegular", "futura", sans-serif;
 	font-size:75px;
+	text-align:center;
 }
 
 	body > header > h1 .given-name,
 	body > header > h1 .family-name {
 		font-weight:bold;
+	}
+	
+	body > header > h1 .additional-name {
+		color: rgb(0, 174, 239);
 	}
 
 body section h1 {

@@ -1,22 +1,33 @@
 @import url("c and l/fonts.css");
+body {
+	width:960px;
+	margin:50px auto;
+}
+section {
+	clear:left;
+}
 
 body > header > h1 {
 	font-family: "ChampagneLimousinesRegular", "futura", sans-serif;
-	font-size:50px;
+	font-size:75px;
 }
 
 	body > header > h1 .given-name,
 	body > header > h1 .family-name {
 		font-weight:bold;
 	}
-	
+
+body section h1 {
+	font-family: "Geneva", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "Verdana", sans-serif;
+}
+
 body > section > h1 {
 	font-size: 25px;
 }
 	
-body > section > h1 >section > h1 {
-	font-size:18px;
-}
+	body > section > h1 >section > h1 {
+		font-size:18px;
+	}
 	
 ul.taglist {
 	list-style-type:disc;

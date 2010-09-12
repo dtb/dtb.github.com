@@ -1,27 +1,27 @@
 @import url("c and l/fonts.css");
 
 body > header > h1 {
-    font-family: "ChampagneLimousinesRegular", "futura", sans-serif;
-    font-size:50px;
+	font-family: "ChampagneLimousinesRegular", "futura", sans-serif;
+	font-size:50px;
 }
 
-    body > header > h1 .given-name,
-    body > header > h1 .family-name {
-        font-weight:bold;
-    }
-    
-    body > section > h1 {
-        font-size: 25px;
-    }
-    
-    body > section > h1 >section > h1 {
-        font-size:18px;
-    }
-    
+	body > header > h1 .given-name,
+	body > header > h1 .family-name {
+		font-weight:bold;
+	}
+	
+body > section > h1 {
+	font-size: 25px;
+}
+	
+body > section > h1 >section > h1 {
+	font-size:18px;
+}
+	
 ul.taglist {
-    list-style-type:disc;
+	list-style-type:disc;
 }
 
 ul.taglist li {
-    float:left;
+	float:left;
 }

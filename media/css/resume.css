@@ -11,6 +11,7 @@ a {
 }
 section {
 	clear:left;
+	overflow:auto;
 }
 
 body > header > h1 {

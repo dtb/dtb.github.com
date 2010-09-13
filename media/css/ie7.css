@@ -1,3 +1,20 @@
 address {
 	font-style:normal;
 }
+
+address span.adr {
+	float:left;
+}
+address span.tel {
+	float:left;
+}
+
+#education h1 span.institution,
+#work-experience h1 span.title,
+#work-experience h1 span.company, {
+	float:left;
+}
+#education div,
+#work-experience p {
+	clear:both;
+}

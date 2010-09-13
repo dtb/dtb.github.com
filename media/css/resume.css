@@ -60,7 +60,7 @@ body > section > h1 {
 		margin:1em 0 .3em 0;
 	}
 	
-	section > section > h1 span{
+	section > section > h1 span.timeframe{
 		float:right;
 	}
 ul, p {

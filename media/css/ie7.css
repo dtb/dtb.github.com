@@ -13,8 +13,13 @@ address span.tel {
 #work-experience h1 span.title,
 #work-experience h1 span.company, {
 	float:left;
+	margin-right:.35em;
 }
 #education div,
 #work-experience p {
 	clear:both;
+}
+
+h1 {
+	font-weight:normal;
 }

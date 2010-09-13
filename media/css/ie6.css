@@ -72,25 +72,28 @@ font-weight : normal; }
 
 h1.n, h1.n span { 
 margin-bottom : .5em;
-font-size : 3em; 
-line-height : 1; }
+font-size : 2em; 
+line-height : 1; 
+font-family: "ChampagneLimousinesRegular", "futura", sans-serif;
+/*font-size:80px;*/
+}
 
 h2, section h1 { 
 margin-bottom : .75em;
-font-size : 2em; }
+font-size : 1.5em; }
 
 h3, section section h1 {
 margin-bottom : 1em;
-font-size : 1.5em;
+font-size : 1.2em;
 line-height : 1 ; }
 
 h4, section section section h1 {
 margin-bottom : 1.25em;
-font-size : 1.2em;
+font-size : 1em;
 line-height : 1.25; }
 
 h5, h6 { 
-margin-bottom : 1.5em;
+margin-bottom : .75em;
 font-weight : bold; 
 font-size : 1em; }
 

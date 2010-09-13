@@ -70,7 +70,7 @@ color : #4c4c4c; }
 h1, h2, h3, h4, h5, h6 { 
 font-weight : normal; }
 
-h1 { 
+h1.n, h1.n span { 
 margin-bottom : .5em;
 font-size : 3em; 
 line-height : 1; }

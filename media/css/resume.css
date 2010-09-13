@@ -1,6 +1,6 @@
 @import url("c and l/fonts.css");
 body {
-	width:960px;
+	max-width:960px;
 	margin:20px auto;
 	font-family:Garamond, times, "times new roman", serif;
 	font-size:18px;
@@ -10,7 +10,7 @@ a {
 	color: rgb(0, 174, 239);
 }
 section {
-	clear:left;
+	clear:both;
 	overflow:auto;
 }
 

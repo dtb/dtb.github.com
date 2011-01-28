@@ -1,0 +1,101 @@
+<!doctype HTML>
+<html>
+	<head>
+		<title>Canvassing</title>
+		<style>
+			body {
+				font-family:"helvetica neue", arial, sans-serif ;
+				margin:0;
+				padding:0;
+			}
+			
+			
+			#whisky {
+				margin:0;
+				padding:0;
+			}
+		</style>
+	</head>
+	<body>
+			<canvas id="whisky" width="1000" height="500">
+			
+			</canvas>
+			
+			<script>
+				var canvas = document.getElementById('whisky');
+				canvas.height = window.innerHeight-3;
+				canvas.width = window.innerWidth-3;
+				
+				var branches = 9;
+				
+				function length_for_depth(n)
+				{
+					var q = 1/(branches-n+6)
+					
+					return q;
+				}
+				
+				
+				var colorStart = {
+					"r": 59,
+					"g": 50,
+					"b": 12
+				};
+				
+				var colorEnd = {
+					"r": 33,
+					"g": 89,
+					"b": 14
+				};
+				
+				
+				function color_for_depth(n)
+				{
+					var newColor = {
+						"r": n/branches*colorStart.r + (1-n/branches)*colorEnd.r,
+						"g": n/branches*colorStart.g + (1-n/branches)*colorEnd.g,
+						"b": n/branches*colorStart.b + (1-n/branches)*colorEnd.b
+					};
+					
+					return "rgb(" + newColor.r.toFixed(0) + ", " + newColor.g.toFixed(0) + ", " + newColor.b.toFixed(0) + ")";
+				}
+				
+				function tree(depth, length, direction, ctxt, pos)
+				{
+					if(depth > 0)
+					{
+						ctxt.beginPath();
+						ctxt.moveTo(pos.x, pos.y);
+						var drawLen = length_for_depth(depth)*length;
+						var newPos = {
+							"x": pos.x + Math.cos(direction)*drawLen,
+							"y": pos.y - Math.sin(direction)*drawLen
+						};
+						
+						ctxt.lineTo(newPos.x, newPos.y);
+						ctxt.strokeStyle = "#000";
+						ctxt.stroke();
+						
+						window.setTimeout(function(){tree(depth - 1, length, direction+(-Math.PI/6+Math.random()*Math.PI/3), ctxt, newPos)}, 250+Math.random()*250);
+						window.setTimeout(function(){tree(depth - 1, length, direction+(-Math.PI/6+Math.random()*Math.PI/3), ctxt, newPos)}, 250+Math.random()*250);
+					}
+				}
+				
+				var ctxt = canvas.getContext('2d');
+				
+				var trees = 15;
+				for(var i=0; i < trees; i++)
+				{
+					
+					var pos = {
+						"x": (canvas.width + .5) * Math.random(),
+						"y": (canvas.height - .5)
+					};
+					
+					tree(7+Math.random()*2, (.2+.9*Math.random())*canvas.height, Math.PI/2+(-Math.PI/32+Math.random()*Math.PI/16), ctxt, pos);
+				}
+				
+			</script>
+	</body>
+</html>
+	

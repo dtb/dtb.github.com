@@ -1,0 +1,115 @@
+<!doctype HTML>
+<html>
+	<head>
+		<title>Canvassing</title>
+		<style>
+			body {
+				font-family:"helvetica neue", arial, sans-serif ;
+				margin:0;
+				padding:0;
+			}
+			
+			
+			#whisky {
+				margin:0;
+				padding:0;
+			}
+		</style>
+	</head>
+	<body>
+			<canvas id="whisky" width="1000" height="500">
+			
+			</canvas>
+			
+			<script>
+				var canvas = document.getElementById('whisky');
+				canvas.height = window.innerHeight-3;
+				canvas.width = window.innerWidth-3;
+				
+				var maxDepth = 9;
+				
+				function length_for_depth(n)
+				{
+					var q = 1/(maxDepth-n+6)
+					
+					return q;
+				}
+				
+				var numbers = function()
+				{
+					var numbers = [];
+					var last = 0;
+					var xForm = function(storedNum, numIdx, depth){ return storedNum; };
+					
+					this.next = function(depth)
+					{
+						if(! numbers[last])
+							numbers[last] = Math.random();
+							
+						last++;
+						
+						return xForm(numbers[last-1], last-1, maxDepth - depth);
+					};
+					
+					this.reset = function() 
+					{
+						last = 0;
+					};
+					
+					this.transform = function(usrXForm)
+					{
+						xForm = usrXForm;
+					};
+				};
+				
+				function tree(depth, length, direction, nGen, ctxt, pos)
+				{
+					if(depth > 0)
+					{
+						ctxt.beginPath();
+						ctxt.moveTo(pos.x, pos.y);
+						var drawLen = length_for_depth(depth)*length;
+						var newPos = {
+							"x": pos.x + Math.cos(direction)*drawLen,
+							"y": pos.y - Math.sin(direction)*drawLen
+						};
+						
+						ctxt.lineTo(newPos.x, newPos.y);
+						ctxt.strokeStyle = "#000";
+						ctxt.stroke();
+						
+						tree(depth - 1, length, direction+(-Math.PI/6+nGen(depth - 1)*Math.PI/3), nGen, ctxt, newPos);
+						tree(depth - 1, length, direction+(-Math.PI/6+nGen(depth - 1)*Math.PI/3), nGen, ctxt, newPos);
+					}
+				}
+				
+				var currWindAngle = 0;
+				var cycle = 0;
+				var numbahs = new numbers();
+				var wind = function() {
+					var ctxt = canvas.getContext('2d');
+				
+					var pos = {
+						"x": (canvas.width + .5) * .25,
+						"y": (canvas.height - .5)
+					};
+				
+					numbahs.transform(function(num, idx, depth){ return num - Math.pow(depth, 2)*currWindAngle *Math.PI/180; });
+					
+					ctxt.clearRect(0, 0, canvas.width, canvas.height);
+					tree(maxDepth, .8*canvas.height, Math.PI/2+(-Math.PI/32+numbahs.next(1)*Math.PI/16), numbahs.next, ctxt, pos);
+					
+					numbahs.reset();
+					
+					currWindAngle = 6 * Math.sin(cycle * Math.PI/180);
+					
+					cycle++;
+					
+					window.setTimeout(wind, 16);
+				};
+				
+				wind();
+				
+			</script>
+	</body>
+</html>

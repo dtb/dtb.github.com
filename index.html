@@ -6,24 +6,46 @@
 		<link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
 		<style>
 		body {
-			width:450px;
+			width:600px;
 			margin-left:200px;
 			font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 			line-height:1.4;
 			font-size:13px;
 			background:#F3f3f3;
 			border-left:6px solid rgb(181, 7, 7);
-			padding-left:30px;
 			border-top-left-radius:4px 5px;
 			color:#333;
 		}
-		h1, h2 {
+		#inner {	
+			padding-left:30px;
+			overflow:hidden;
+		}
+		#cards {
+			width:10000px;
+		}
+		
+		.card:first-child {
+			width:450px;
+			margin-right:175px;
+			-webkit-box-shadow: none;
+		}
+		
+		.card {
 			width:600px;
+			float:left;
+			background:#F3F3F3;
+			height:620px;
+			-webkit-transition:margin-left .5s ease-in-out;
+			-webkit-box-shadow: 0px 0px 25px 12px #E9E9E9;
+		}
+		
+		h1, h2 {
 			font-family:"Raleway";
 			font-weight:normal;
 			margin-bottom:.25em;
 		}
 		h1{
+			width:600px;
 			font-size:3em;
 		}
 		h2 {
@@ -32,36 +54,81 @@
 		</style>
 	</head>
 	<body>
-		<h1>notjim<span title="Mmm, mm look at this big fat em dash">—</span>David Thomas Bernal</h1>
-		<p>
-			Hi! I'm David. I go by notJim on the internet. 
-		</p>
-		<p>
-			This is my place where I put random stuff I'm playing around with. It turns out that
-			pushing to a git remote is a lot easier than SFTPing into my VPN.
-		</p>
-		<p>
-			You may have guessed that I'm a web developer. In the past few years, I've written MVC applications
-			in PHP and now in C#. Go ahead and ask me which I prefer.
-		</p>
-		<p>
-			I'm currently very interested in interaction design and UX, as well as API design and security.
-		</p>
-		<h2>Recently</h2>
-		<p>
-			I'm currently working at <a href="http://thinkecoinc.com">ThinkEco</a> on our web-powered energy-efficiency
-			product (an outlet that helps you save power). If you've never written a web app that interfaces with 
-			hardware, you're missing out.
-		</p>
-		<p>
-			At ThinkEco, my work involves designing user-friendly, gracefully-degrading user interfaces, as well as
-			our REST API. 
-		</p>
-		<h2>On the side</h2>
-		<p>
-			When I'm not at work, I listen to music and play Starcraft II. 
-		</p>
-		<p>
-			I've also been trying to come up with a way to draw beautiful fractal trees that sway in a gentle breeze. 
-			As it turns out, this is actually pretty frustrating.
-		</p>
+		<div id="inner">
+			<div id="cards">
+				<section class="card">
+					<h1>notjim<span title="Mmm, mm look at this big fat em dash">—</span>David Thomas Bernal</h1>
+					<p>
+						Hi! I'm David. I go by notJim on the internet. 
+					</p>
+					<p>
+						This is my place where I put random stuff I'm playing around with. It turns out that
+						pushing to a git remote is a lot easier than SFTPing into my VPN.
+					</p>
+					<p>
+						You may have guessed that I'm a web developer. In the past few years, I've written MVC applications
+						in PHP and now in C#. Go ahead and ask me which I prefer.
+					</p>
+					<p>
+						I'm currently very interested in interaction design and UX, as well as API design and security.
+					</p>
+					<h2>Recently</h2>
+					<p>
+						I'm currently working at <a href="http://thinkecoinc.com">ThinkEco</a> on our web-powered energy-efficiency
+						product (an outlet that helps you save power). If you've never written a web app that interfaces with 
+						hardware, you're missing out.
+					</p>
+					<p>
+						At ThinkEco, my work involves designing user-friendly, gracefully-degrading user interfaces, as well as
+						our REST API. 
+					</p>
+					<h2>On the side</h2>
+					<p>
+						When I'm not at work, I listen to music and play Starcraft II. 
+					</p>
+					<p>
+						I've also been trying to come up with a way to draw beautiful fractal trees that sway in a gentle breeze. 
+						As it turns out, this is actually pretty frustrating.
+					</p>
+					<a id="more" href="#more">More →</a>
+				</section>
+				<section class="card">
+					<h2>More</h2>
+					<p>
+						2
+					</p>
+					<p>
+						2
+					</p>
+					<p>
+						2
+					</p>
+					<p>
+						2
+					</p>
+					<p>
+						2
+					</p>
+					<p>
+						2
+					</p>
+					<p>
+						2
+					</p>
+					<a id="back" href="#">← Back</a>
+				</section>
+				<div style="clear:both"></div>
+			</div>
+		</div>
+		
+		<script>
+			document.getElementById("more").addEventListener("click", function(e)
+			{
+				document.getElementById("cards").childNodes[3].style.marginLeft = "-615px";
+			});
+			
+			document.getElementById("back").addEventListener("click", function(e)
+			{
+				document.getElementById("cards").childNodes[3].style.marginLeft = "0";
+			});
+		</script>

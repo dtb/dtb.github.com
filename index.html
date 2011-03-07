@@ -12,8 +12,6 @@
 			line-height:1.4;
 			font-size:13px;
 			background:#F3f3f3;
-			border-left:6px solid rgb(181, 7, 7);
-			border-top-left-radius:4px 5px;
 			color:#333;
 		}
 		#inner {	
@@ -34,7 +32,7 @@
 			width:600px;
 			float:left;
 			background:#F3F3F3;
-			height:620px;
+			height:640px;
 			-webkit-transition:margin-left .5s ease-in-out;
 			-webkit-box-shadow: 0px 0px 25px 12px #E9E9E9;
 		}
@@ -79,20 +77,21 @@
 						hardware, you're missing out.
 					</p>
 					<p>
-						At ThinkEco, my work involves designing user-friendly, gracefully-degrading user interfaces, as well as
+						At ThinkEco I work on the full stack, moving comfortably from ASP.Net MVC code to javascript and CSS.
+						Recently, my work involves designing user-friendly, gracefully-degrading user interfaces, as well as
 						our REST API. 
 					</p>
 					<h2>On the side</h2>
 					<p>
-						When I'm not at work, I listen to music and play Starcraft II. 
-					</p>
-					<p>
-						I've also been trying to come up with a way to draw beautiful fractal trees that sway in a gentle breeze. 
+						I've been trying to come up with a way to draw beautiful fractal trees that sway in a gentle breeze. 
 						As it turns out, this is actually pretty frustrating.
 					</p>
-					<a id="more" href="#more">More →</a>
+					<p>
+						When I'm not programming, I listen to music and play Starcraft II. 
+					</p>
+					<!--<a id="more" href="#more">More →</a>-->
 				</section>
-				<section class="card">
+				<!--<section class="card">
 					<h2>More</h2>
 					<p>
 						2
@@ -116,19 +115,24 @@
 						2
 					</p>
 					<a id="back" href="#">← Back</a>
-				</section>
+				</section>-->
 				<div style="clear:both"></div>
 			</div>
 		</div>
 		
 		<script>
+			
+			var back = function(e)
+			{
+				if(e.target.id == "more") return;
+				document.getElementById("cards").childNodes[3].style.marginLeft = "0";
+			};
+			
+			document.getElementById("cards").childNodes[1].addEventListener("click", back, false);
+			document.getElementById("back").addEventListener("click", back);
 			document.getElementById("more").addEventListener("click", function(e)
 			{
 				document.getElementById("cards").childNodes[3].style.marginLeft = "-615px";
 			});
 			
-			document.getElementById("back").addEventListener("click", function(e)
-			{
-				document.getElementById("cards").childNodes[3].style.marginLeft = "0";
-			});
 		</script>

@@ -1,0 +1,101 @@
+@import url("Justus_Roman/stylesheet.css");
+
+body {
+	background: #FFFFDE;
+	color: #454545;
+}
+#inner {
+	width:600px;
+	margin:20px auto;
+	font-family: "helvetica neue", "arial", "helvetica", sans-serif;
+	font-size:14px;
+	line-height:1.35;
+}
+h1, h2, h3, h4, h5, h6 {
+	color:#444;
+	text-transform:lowercase;
+}
+h1 {
+	text-align:center;
+	font-size: 40px;
+	font-family:"Justus Roman", serif;
+	color:#692402;
+	margin: .33em 0 .67em 0;
+}
+body#post h1 {/* we don't need ridiculously-large headers on posts*/
+	font-size:25px;
+}
+
+pre {/* punting on this for now */
+	max-width:100%;
+	line-height:1.5;
+	overflow:auto;
+	padding:.5em;
+	font-family: "monaco", "consolas", ;
+}
+ul#posts {
+	list-style:none;
+	padding-left:0;
+	text-transform:lowercase;
+}
+.pubdate {
+	color:#d2d2bd;
+}
+.date {
+	color: #555;
+	display: inline-block;
+	width: 100px;
+	text-align: right;
+	text-transform:lowercase;
+}
+.date::after {
+	content: " » ";
+	color: black;
+	font-style: italic;
+}
+p#allposts:before {
+	content:"» ";
+	color:black;
+	font-style:italic;
+}
+footer {
+	border-top: 1px solid #CCC;
+	padding: 20px 0;
+}
+footer ul {
+	list-style: none;
+	padding-left: 0;
+	margin: 0;
+}
+
+footer ul li:before {
+	content: "» ";
+	font-style:italic;
+}
+footer, footer a {
+	color: #d2d2bd;
+}
+footer a:hover{
+	color: #9F9F7D;
+}
+#wheretofindme {
+	width: 250px;
+	float: left;
+}
+#mynameagain {
+	float: left;
+	font-family: "justus roman";
+	text-transform: lowercase;
+	width: 120px;
+	font-size: 24px;
+}
+#mynameagain a {
+	text-decoration:none;
+}
+#inspiration {
+	float: left;
+	width: 220px;
+}
+#inspiration span {
+	text-transform:lowercase;
+}

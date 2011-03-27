@@ -21,6 +21,7 @@ h1 {
 	font-family:"Justus Roman", serif;
 	color:#692402;
 	margin: .33em 0 .67em 0;
+	text-shadow: 0 0 1px #B29485;
 }
 body#post h1 {/* we don't need ridiculously-large headers on posts*/
 	font-size:25px;
@@ -31,7 +32,7 @@ pre {/* punting on this for now */
 	line-height:1.5;
 	overflow:auto;
 	padding:.5em;
-	font-family: "monaco", "consolas", ;
+	font-family: "monaco", "consolas", monospace;
 }
 ul#posts {
 	list-style:none;

@@ -9,7 +9,7 @@ body {
 	margin:20px auto;
 	font-family: "helvetica neue", "arial", "helvetica", sans-serif;
 	font-size:14px;
-	line-height:1.35;
+	line-height:1.45;
 }
 h1, h2, h3, h4, h5, h6 {
 	color:#444;
@@ -25,6 +25,18 @@ h1 {
 }
 body#post h1 {/* we don't need ridiculously-large headers on posts*/
 	font-size:25px;
+}
+
+pre, code {
+	background: #FFFFED;
+	border:1px solid #ECECEC;
+	padding:0px .25em;
+	line-height:1.6;
+}
+pre code {
+	background: transparent;
+	border:none;
+	padding:0;
 }
 
 pre {/* punting on this for now */

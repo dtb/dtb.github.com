@@ -32,7 +32,7 @@ Finally, rename the xpi file to something else, so that Firefox will ignore it.
 Your directory should now look like this:
 
     $ ls
-	 old-restlcient.xpi                         {ad0d925d-88f8-47f1-85ea-8463569e756e}
+	 old-restlcient.xpi  {ad0d925d-88f8-47f1-85ea-8463569e756e}
 
 ## Making changes
 

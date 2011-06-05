@@ -1,7 +1,7 @@
 @import url("Justus_Roman/stylesheet.css");
 
 body {
-	background: #FFFFDE;
+	background: #FFFFE3 url('/media/tile.jpg') repeat;
 	color: #454545;
 }
 #inner {

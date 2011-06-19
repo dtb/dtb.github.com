@@ -88,6 +88,11 @@ footer ul li:before {
 }
 footer, footer a {
 	color: #d2d2bd;
+	-webkit-transition: color .25s ease-in-out;
+	   -moz-transition: color .25s ease-in-out;
+	     -o-transition: color .25s ease-in-out;
+	    -ms-transition: color .25s ease-in-out;
+	        transition: color .25s ease-in-out;
 }
 footer a:hover{
 	color: #9F9F7D;
@@ -105,6 +110,7 @@ footer a:hover{
 }
 #mynameagain a {
 	text-decoration:none;
+	display: block;
 }
 #inspiration {
 	float: left;
@@ -112,4 +118,16 @@ footer a:hover{
 }
 #inspiration span {
 	text-transform:lowercase;
+}
+
+em.extra_emph {
+    text-decoration:underline;
+    font-style:normal;
+    border:1px solid #999;
+    padding:0 1px;
+}
+
+div.footnotes {
+    font-size:90%;
+    color: ;#808076
 }

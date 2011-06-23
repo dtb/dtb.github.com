@@ -13,15 +13,15 @@ canvas {
 
 # Drawing Simple Particle Systems with HTML5's Canvas Tag
 
-Inspired by [this awesome series of articles][insp] on BIT-101 (Keith Peters' blog, which I found via a tweet from Paul irish)
+Inspired by [this awesome series of articles][insp] on BIT-101 (Keith Peters' blog, which I found via a tweet from Paul Irish)
 intended to introduce Flash developers to `<canvas>`, I finally decided to get down to learning some canvas tag for myself. 
 Here's a few things I made.
 
 ## Basics: a vibrating particle system
 
 To start off, I wanted to just get a handle on drawing and animating the particles using the 2D canvas API. First,
-I made an array of points with a randomized x and y position. Then, using `setInterval`, I made timer that every
-20 milliseconds moved those particles a random amount, and then redrew them.
+I made an array of points with a randomized x and y position. Then, using `setInterval`, I made a timer that every
+20 milliseconds moves those particles a random amount, and then redraws them.
 
 <div class="canvasgroup">
 	<div class="canvascontainer">
@@ -92,7 +92,7 @@ where he draws a series of connected points that end up looking [very pretty][pr
 those lines.
 
 In my case, I decided I'd draw simple points that floated around and made connections with the nearby points around them. To keep
-from drawing connections between points twice (which ends up looking bad), I had to made a connectivity matrix— a matrix such that
+from drawing connections between points twice (which ends up looking bad), I had to make a connectivity matrix—a matrix such that
 `matrix[i][j] == matrix[j][i] == 1` iff a line has been drawn between `points[i]` and `points[j]`. Incidentally, finding
 nearby points is done using a dumb `O(n^2)` search. I'd be intrigued if there's a way of doing it faster. Pretty curves
 are drawn between points using `drawQuadraticCurveTo` (2nd order b-splines!)

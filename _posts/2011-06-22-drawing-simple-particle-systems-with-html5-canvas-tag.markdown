@@ -24,6 +24,7 @@ I made an array of points with a randomized x and y position. Then, using `setIn
 20 milliseconds moves those particles a random amount, and then redraws them.
 
 <div class="canvasgroup">
+
 	<div class="canvascontainer">
 			<canvas width="400" height="400" id="random"></canvas>
 	</div>
@@ -32,7 +33,8 @@ I made an array of points with a randomized x and y position. Then, using `setIn
 		var randomDrawing = drawRandom("random"); 
 	</script>
 	<button class="start" onclick="randomDrawing.start();"> ► Start</button>
-	<button class="stop" onclick="randomDrawing.stop();"> ◼ Stop</button>
+	<button class="stop" onclick="randomDrawing.stop();"> ◼ Stop</button><br />
+	Code: <a href="https://github.com/dtb/dtb.github.com/blob/master/canvas2/random.particles.js#slider">random.particles.js</a>
 </div>
 
 ## Less chaos: falling particles
@@ -49,7 +51,8 @@ the particles a randomized initial velocity. Once they hit the ground, they stay
 		var fallingDrawing = falling("falling"); 
 	</script>
 	<button class="start" onclick="fallingDrawing.start();"> ► Start</button>
-	<button class="stop" onclick="fallingDrawing.stop();">◼ Stop</button>
+	<button class="stop" onclick="fallingDrawing.stop();">◼ Stop</button><br />
+	Code: <a href="https://github.com/dtb/dtb.github.com/blob/master/canvas2/falling.particles.js#slider">falling.particles.js</a>
 </div>
 
 ## More chaos! Bouncing particles
@@ -65,7 +68,8 @@ velocities. Then, I moved the particle `vX` and `vY` units each time step.
 		var bouncingDrawing = bouncy("bouncing"); 
 	</script>
 	<button class="start" onclick="bouncingDrawing.start();"> ► Start</button>
-	<button class="stop" onclick="bouncingDrawing.stop();">◼ Stop</button>
+	<button class="stop" onclick="bouncingDrawing.stop();">◼ Stop</button> <br />
+	Code: <a href="https://github.com/dtb/dtb.github.com/blob/master/canvas2/bouncing.particles.js#slider">bouncing.particles.js</a>
 </div>
 
 ## Emitting Particles
@@ -82,7 +86,8 @@ ugly black-border circles, so I changed to using filled circles of random radius
 		var emitDrawing = emit("emit"); 
 	</script>
 	<button class="start" onclick="emitDrawing.start();"> ► Start</button>
-	<button class="stop" onclick="emitDrawing.stop();">◼ Stop</button>
+	<button class="stop" onclick="emitDrawing.stop();">◼ Stop</button><br />
+	Code: <a href="https://github.com/dtb/dtb.github.com/blob/master/canvas2/emitted.particles.js#slider">emitted.particles.js</a>
 </div>
 
 ## Particle networks!
@@ -104,7 +109,8 @@ are drawn between points using `drawQuadraticCurveTo` (2nd order b-splines!)
 		var connectedDrawing = connected("connect"); 
 	</script>
 	<button class="start" onclick="connectedDrawing.start();"> ► Start</button>
-	<button class="stop" onclick="connectedDrawing.stop();">◼ Stop</button>
+	<button class="stop" onclick="connectedDrawing.stop();">◼ Stop</button><br />
+	Code: <a href="https://github.com/dtb/dtb.github.com/blob/master/canvas2/connected.particles.js#slider">connected.particles.js</a>
 </div>
 
 

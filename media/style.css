@@ -5,7 +5,7 @@ body {
 	color: #454545;
 }
 #inner {
-	width:600px;
+	max-width:600px;
 	margin:20px auto;
 	font-family: "helvetica neue", "arial", "helvetica", sans-serif;
 	font-size:14px;

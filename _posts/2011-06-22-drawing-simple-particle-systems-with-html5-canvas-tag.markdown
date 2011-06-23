@@ -87,7 +87,7 @@ ugly black-border circles, so I changed to using filled circles of random radius
 
 ## Particle networks!
 
-Finally I wanted to do something way different, so I looked again at BIT-101. Keith has a series of articles ([ ► Start here][pretty])
+Finally I wanted to do something way different, so I looked again at BIT-101. Keith has a series of articles ([start here][pretty])
 where he draws a series of connected points that end up looking [very pretty][pretty2]. I figured I wanted to do something along
 those lines.
 

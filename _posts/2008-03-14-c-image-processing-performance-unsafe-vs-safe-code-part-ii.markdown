@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title: C# Image Processing Performance - Unsafe vs. Safe code, Part II
@@ -8,7 +7,7 @@ title: C# Image Processing Performance - Unsafe vs. Safe code, Part II
 
 <span class="pubdate">published mar 14 2008</span>
 
-In <a href="http://davidthomasbernal.com/blog/8/c-image-processing-performance-unsafe-vs-safe-code-part-i">Part I of this article</a>, I outlined a method of performing pixel-level operations on an image that required neither unsafe code, nor the use of the <code>GetPixel</code> and <code>SetPixel</code> methods, which are notoriously slow. The one thing I neglected to include was an actual comparison of the <code>IntPtr</code> and pointer methods with the <code>GetPixel\SetPixel</code> methods. As such, I present such a method below. It looks tantalizingly simple, but we'll soon see that it is basically worthless.
+In <a href="http://davidthomasbernal.com/blog/2008/03/13/c-image-processing-performance-unsafe-vs-safe-code-part-i">Part I of this article</a>, I outlined a method of performing pixel-level operations on an image that required neither unsafe code, nor the use of the <code>GetPixel</code> and <code>SetPixel</code> methods, which are notoriously slow. The one thing I neglected to include was an actual comparison of the <code>IntPtr</code> and pointer methods with the <code>GetPixel\SetPixel</code> methods. As such, I present such a method below. It looks tantalizingly simple, but we'll soon see that it is basically worthless.
 
 {% highlight c# %}
 public Image ThresholdGS(float thresh)

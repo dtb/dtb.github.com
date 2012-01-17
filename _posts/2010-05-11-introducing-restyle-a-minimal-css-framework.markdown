@@ -35,7 +35,7 @@ title: "Introducing ReStyle: a Minimal CSS Framework"
 
 <h3>About ReStyle</h3>
 
-<p><a href="http://github.com/notjim/restyle">ReStyle</a> is available on GitHub, and is placed under the BSD license.</p>
+<p><a href="https://github.com/dtb/Restyle">ReStyle</a> is available on GitHub, and is placed under the BSD license.</p>
 
 <p>In creating ReStyle, I stuck with the reset stylesheet from Eric Meyer. This stylesheet provides a good starting point, though it does have a few issues in Internet Explorer 7 (e.g., header tags remain bolded, address tags are italicized) due to the browser's poor implementation of the <code>inherit</code> value in CSS.</p>
 

@@ -83,6 +83,11 @@
 
 				return child;
 			};
+
+			function get_digits(numbah, digitz) {
+				var scalesies = Math.pow(10, digitz);
+				return Math.floor(numbah * scalesies) / scalesies;
+			}
 		</script>
 		<script>
 			(function() {
@@ -97,7 +102,7 @@
 					'objects': [],
 					'gameSpeed': -.25,
 					'canvIdx': 0,
-					'fr' : 0,
+					'framerate' : 0,
 					'constructor': function(canvasId) {
 						this.lastPaint = Date.now();
 
@@ -149,12 +154,12 @@
 
 						this.frames++;
 						if(this.frames % 12 == 0) {
-							this.fr = this.frames*1000/(Date.now() - this.start);
+							this.framerate = this.frames*1000/(Date.now() - this.start);
 							this.frames = 0;
 							this.start = Date.now();
 						}
 						this.lastPaint = Date.now();
-						this.backbufferContext.strokeText(this.fr, 900, 20);
+						this.backbufferContext.strokeText(get_digits(this.framerate, 2), 900, 20);
 						this.swapsies();
 						//this.context.clearRect(0, 0, this.width, this.height);
 						//this.context.drawImage(this.backbufferCanvas, 0, 0);
@@ -216,12 +221,14 @@
 						if(centroid.y <= 0) 
 							centroid.y = game.height;
 
-						game.backbufferContext.drawImage(this.image, 0, this.image.naturalHeight - centroid.y, this.image.naturalWidth, centroid.y, 0, 0, game.width, centroid.y);
+						var topSegment = this.image.naturalHeight - centroid.y;
+
+						game.backbufferContext.drawImage(this.image, 0, topSegment, this.image.naturalWidth, centroid.y, 0, 0, game.width, centroid.y);
 						game.backbufferContext.drawImage(this.image, 
 							/* sx */0, /* sy */ 0, 
-							/* sw */ this.image.naturalWidth, /* sh */ this.image.naturalHeight - centroid.y, 
+							/* sw */ this.image.naturalWidth, /* sh */ topSegment, 
 							/* dx */ 0,  /* dy */ centroid.y,
-							/* dw */ game.width, /* dh */ this.image.naturalHeight - centroid.y
+							/* dw */ game.width, /* dh */ topSegment
 						);
 					}
 				});

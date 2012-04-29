@@ -226,10 +226,10 @@
 						this.debugLines = [];
 					},
 					'drawDebug': function() {
-						var pos = 20;
+						var pos = 15;
 						this.backbufferContext.font = '10px courier';
 						_.each(this._debugLines, function(v) {
-							this.backbufferContext.fillText(v, 0.5, pos);	
+							this.backbufferContext.fillText(v, 5, pos);	
 							pos += 18;
 						}, this);
 						this._debugLines = [];
@@ -237,7 +237,7 @@
 				});
 
 				var InputManager = inherits(function() { }, {
-					// from jQuery UI: https://github.com/jquery/jquery-ui/blob/master/ui/jquery.ui.core.js thanks guys!
+					// from jQuery UI: https://github.com/jquery/jquery-ui/blob/master/ui/jquery.ui.core.js --thanks guys!
 					'Keys': {
 						'BACKSPACE': 8,
 						'COMMA': 188,
@@ -335,13 +335,18 @@
 
 				var Player = inherits(Drawable, {
 					'doDraw': function(centroid, dT, game) {
-						game.debug(game.inputManager._keysDown);
-						if(game.inputManager.keyDown(game.inputManager.Keys.Left)) {
-							centroid.x -= -5;
+						if(game.inputManager.keyDown(game.inputManager.Keys.LEFT)) {
+							centroid.x -= 20;
 						}
 
-						if(game.inputManager.keyDown(game.inputManager.Keys.Right)) {
-							centroid.x += 5;
+						if(game.inputManager.keyDown(game.inputManager.Keys.RIGHT)) {
+							centroid.x += 20;
+						}
+						if(centroid.x - 5 < 0) {
+							centroid.x = 20;
+						}
+						if(centroid.x + 5 >= game.width) {
+							centroid.x = game.width - 6;
 						}
 
 						this.constructor.__super__.doDraw.call(this, centroid, dT, game);

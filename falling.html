@@ -88,6 +88,15 @@
 				var scalesies = Math.pow(10, digitz);
 				return Math.floor(numbah * scalesies) / scalesies;
 			}
+
+			_.mixin({
+				'isPrimitive': function(val) {
+					return _.isString(val) || _.isNumber(val);
+				},
+				'repeatStr': function(str, times) {
+					return new Array(times + 1).join(str);
+				}
+			});
 		</script>
 		<script>
 			(function() {
@@ -103,37 +112,39 @@
 					'gameSpeed': -.25,
 					'canvIdx': 0,
 					'framerate' : 0,
+					'inputManager': null,
+					'_debugLines': [],
 					'constructor': function(canvasId) {
-						this.lastPaint = Date.now();
-
 						this.canvii = document.getElementsByTagName('canvas');
 
-						this.canvas = this.canvii[0];
-
-						this.backbufferCanvas = this.canvii[1];
-
-						this.context = this.canvas.getContext('2d');
-						this.backbufferContext = this.backbufferCanvas.getContext('2d');
+						this.swapsies();
 
 						this.width = this.canvas.width;
 						this.height = this.canvas.height;
 
-						var centerObj = new Drawable({
+						this.draw = _.bind(this._draw, this);
+						this.debugObject = _.bind(this._debugObject, this);
+
+						this.frames = 0;
+						this.times = [];
+						this.start = Date.now();
+
+						this.lastPaint = Date.now();
+
+						this.inputManager = new InputManager();
+
+						this.initObjects();
+					},
+					'initObjects': function() {
+						var centerObj = new Player({
 							x: this.width/2,
 							y: this.height/2
 						});
 						this.objects.push(centerObj);	
 
-						var self = this;
-						this.draw = _.bind(this._draw, this);
-
-						this.initDots();
-
-						this.frames = 0;
-						this.times = [];
-						this.start = Date.now();
+						this.initBackground();
 					},
-					'initDots': function() {
+					'initBackground': function() {
 						this.objects.unshift(new Background({
 							vY:this.gameSpeed,
 							y: this.height
@@ -151,18 +162,17 @@
 							obj.draw(dT, self);
 						});
 
-
 						this.frames++;
 						if(this.frames % 12 == 0) {
 							this.framerate = this.frames*1000/(Date.now() - this.start);
 							this.frames = 0;
 							this.start = Date.now();
+
 						}
 						this.lastPaint = Date.now();
-						this.backbufferContext.strokeText(get_digits(this.framerate, 2), 900, 20);
+						this.debug(get_digits(this.framerate, 3) + " fps");
+						this.drawDebug();
 						this.swapsies();
-						//this.context.clearRect(0, 0, this.width, this.height);
-						//this.context.drawImage(this.backbufferCanvas, 0, 0);
 					},
 					'swapsies': function() {
 						this.canvas = this.canvii[this.canvIdx];
@@ -174,8 +184,98 @@
 						this.backbufferContext = this.backbufferCanvas.getContext('2d');
 						this.canvas.style.visibility = 'visible';
 						this.backbufferCanvas.style.visibility = 'hidden';
+						this.backbufferContext.clearRect(0,0,this.width, this.height);
+					},
+					'debug': function(obj) {
+						if(_.isPrimitive(obj)) {
+							this._debugLines.push(obj);
+						} else if(_.isObject(obj)) {
+							var self = this;
+							this._debugLines.push('object {');
+							_.each(obj, this.debugObject);
+							this._debugLines.push('}');
+						}
+					},
+					'_debugObject': function(v, k, l, indent) {
+						indent = indent || 1;
+						var tabs = _.repeatStr("  ", indent);
+						if(_.isArray(v) && _.all(v, _.isPrimitive)) {
+							this._debugLines.push(tabs + k + ': [' + v.map(this.debugPrimitive).join(', ') + ']');
+						} else if(_.isObject(v) || _.isArray(v)) {
+							if(_.isArray(v)){
+								var syms = ['{', '}'];
+							} else {
+								var syms = ['[', ']'];
+							}
+							this._debugLines.push(tabs + k + ': ' + syms[0]);
+							_.each(v, function(v, k, l) { this.debugObject(v, k, l, indent + 1) }, this);
+							this._debugLines.push(tabs + syms[1]);
+						} else {
+							this._debugLines.push(tabs + k + ': ' + this.debugPrimitive(v));
+						}
+					},
+					'debugPrimitive': function(v) {
+						if(_.isString(v)) {
+							return '"' + v + '"';
+						} else {
+							return v.toString();
+						}
+					},
+					'printDebug': function() {
+						console.log(this._debugLines.join("\n"));
+						this.debugLines = [];
+					},
+					'drawDebug': function() {
+						var pos = 20;
+						this.backbufferContext.font = '10px courier';
+						_.each(this._debugLines, function(v) {
+							this.backbufferContext.fillText(v, 0.5, pos);	
+							pos += 18;
+						}, this);
+						this._debugLines = [];
 					}
+				});
 
+				var InputManager = inherits(function() { }, {
+					// from jQuery UI: https://github.com/jquery/jquery-ui/blob/master/ui/jquery.ui.core.js thanks guys!
+					'Keys': {
+						'BACKSPACE': 8,
+						'COMMA': 188,
+						'DELETE': 46,
+						'DOWN': 40,
+						'END': 35,
+						'ENTER': 13,
+						'ESCAPE': 27,
+						'HOME': 36,
+						'LEFT': 37,
+						'NUMPAD_ADD': 107,
+						'NUMPAD_DECIMAL': 110,
+						'NUMPAD_DIVIDE': 111,
+						'NUMPAD_ENTER': 108,
+						'NUMPAD_MULTIPLY': 106,
+						'NUMPAD_SUBTRACT': 109,
+						'PAGE_DOWN': 34,
+						'PAGE_UP': 33,
+						'PERIOD': 190,
+						'RIGHT': 39,
+						'SPACE': 32,
+						'TAB': 9,
+						'UP': 38
+					},
+					'_keysDown': {},
+					'constructor': function() {
+						window.addEventListener('keydown', _.bind(this._onkeydown, this));
+						window.addEventListener('keyup', _.bind(this._onkeyup, this));
+					},
+					'_onkeydown': function(ev) {
+						this._keysDown[ev.which] = true;
+					},
+					'_onkeyup': function(ev) {
+						this._keysDown[ev.which] = false;
+					},
+					'keyDown': function(key) {
+						return !!this._keysDown[key];
+					}
 				});
 
 				var Drawable = inherits(function() { }, {
@@ -233,7 +333,26 @@
 					}
 				});
 
-				window.requestAnimationFrame = window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame
+				var Player = inherits(Drawable, {
+					'doDraw': function(centroid, dT, game) {
+						game.debug(game.inputManager._keysDown);
+						if(game.inputManager.keyDown(game.inputManager.Keys.Left)) {
+							centroid.x -= -5;
+						}
+
+						if(game.inputManager.keyDown(game.inputManager.Keys.Right)) {
+							centroid.x += 5;
+						}
+
+						this.constructor.__super__.doDraw.call(this, centroid, dT, game);
+					}
+				});
+
+				window.requestAnimationFrame = window.requestAnimationFrame ||
+					window.webkitRequestAnimationFrame ||
+					window.mozRequestAnimationFrame ||
+					window.msRequestAnimationFrame || 
+					function(func) { window.setTimeout(func, 1000/60); } 
 
 				Falling = {};
 

@@ -42,269 +42,64 @@
 		</div>
 		<script src="http://documentcloud.github.com/underscore/underscore.js"> </script>
 		<script>
-			// Shared empty constructor function to aid in prototype-chain creation.
-			var ctor = function(){};
-
-			// Helper function to correctly set up the prototype chain, for subclasses.
-			// Similar to `goog.inherits`, but uses a hash of prototype properties and
-			// class properties to be extended.
-			var inherits = function(parent, protoProps, staticProps) {
-				var child;
-
-				// The constructor function for the new subclass is either defined by you
-				// (the "constructor" property in your `extend` definition), or defaulted
-				// by us to simply call the parent's constructor.
-				if (protoProps && protoProps.hasOwnProperty('constructor')) {
-					child = protoProps.constructor;
-				} else {
-					child = function(){ parent.apply(this, arguments); };
-				}
-
-				// Inherit class (static) properties from parent.
-				_.extend(child, parent);
-
-				// Set the prototype chain to inherit from `parent`, without calling
-				// `parent`'s constructor function.
-				ctor.prototype = parent.prototype;
-				child.prototype = new ctor();
-
-				// Add prototype properties (instance properties) to the subclass,
-				// if supplied.
-				if (protoProps) _.extend(child.prototype, protoProps);
-
-				// Add static properties to the constructor function, if supplied.
-				if (staticProps) _.extend(child, staticProps);
-
-				// Correctly set child's `prototype.constructor`.
-				child.prototype.constructor = child;
-
-				// Set a convenience property in case the parent's prototype is needed later.
-				child.__super__ = parent.prototype;
-
-				return child;
-			};
-
-			function get_digits(numbah, digitz) {
-				var scalesies = Math.pow(10, digitz);
-				return Math.floor(numbah * scalesies) / scalesies;
-			}
-
 			_.mixin({
+				'round': function(numbah, digitz) {
+					var scalesies = Math.pow(10, digitz);
+					return Math.floor(numbah * scalesies) / scalesies;
+				},
 				'isPrimitive': function(val) {
 					return _.isString(val) || _.isNumber(val);
 				},
 				'repeatStr': function(str, times) {
 					return new Array(times + 1).join(str);
-				}
+				},
+				'inherits': function(parent, protoProps, staticProps) {
+					var child;
+
+					var ctor = function(){};
+					// The constructor function for the new subclass is either defined by you
+					// (the "constructor" property in your `extend` definition), or defaulted
+					// by us to simply call the parent's constructor.
+					if (protoProps && protoProps.hasOwnProperty('constructor')) {
+						child = protoProps.constructor;
+					} else {
+						child = function(){ parent.apply(this, arguments); };
+					}
+
+					// Inherit class (static) properties from parent.
+					_.extend(child, parent);
+
+					// Set the prototype chain to inherit from `parent`, without calling
+					// `parent`'s constructor function.
+					ctor.prototype = parent.prototype;
+					child.prototype = new ctor();
+
+					// Add prototype properties (instance properties) to the subclass,
+					// if supplied.
+					if (protoProps) _.extend(child.prototype, protoProps);
+
+					// Add static properties to the constructor function, if supplied.
+					if (staticProps) _.extend(child, staticProps);
+
+					// Correctly set child's `prototype.constructor`.
+					child.prototype.constructor = child;
+
+					// Set a convenience property in case the parent's prototype is needed later.
+					child.__super__ = parent.prototype;
+
+					return child;
+				},
 			});
 		</script>
 		<script>
+			window.Falling = {};
+		</script>
+		<script src="Game.js"></script>
+		<script src="Drawable.js"></script>
+		<script src="InputManager.js"></script>
+		<script>
 			(function() {
-				var Game =  inherits(function() { }, {
-					'canvas': null,
-					'width': 0,
-					'height': 0,
-					'context': null,
-					'backbufferCanvas': null,
-					'backbufferContext': null,
-					'lastPaint': null,
-					'objects': [],
-					'gameSpeed': -.25,
-					'canvIdx': 0,
-					'framerate' : 0,
-					'inputManager': null,
-					'_debugLines': [],
-					'constructor': function(canvasId) {
-						this.canvii = document.getElementsByTagName('canvas');
-
-						this.swapsies();
-
-						this.width = this.canvas.width;
-						this.height = this.canvas.height;
-
-						this.draw = _.bind(this._draw, this);
-						this.debugObject = _.bind(this._debugObject, this);
-
-						this.frames = 0;
-						this.times = [];
-						this.start = Date.now();
-
-						this.lastPaint = Date.now();
-
-						this.inputManager = new InputManager();
-
-						this.initObjects();
-					},
-					'initObjects': function() {
-						var centerObj = new Player({
-							x: this.width/2,
-							y: this.height/2
-						});
-						this.objects.push(centerObj);	
-
-						this.initBackground();
-					},
-					'initBackground': function() {
-						this.objects.unshift(new Background({
-							vY:this.gameSpeed,
-							y: this.height
-						}));
-					},
-					'_draw': function() {
-						if(!this.stop && this.objects.length > 1) {
-							window.requestAnimationFrame(this.draw);
-						}
-						var self = this;
-						var dT = Date.now() - this.lastPaint;
-						var drawStart = Date.now();
-						this.backbufferContext.clearRect(0, 0, this.width, this.height);
-						this.objects.forEach(function(obj) {
-							obj.draw(dT, self);
-						});
-
-						this.frames++;
-						if(this.frames % 12 == 0) {
-							this.framerate = this.frames*1000/(Date.now() - this.start);
-							this.frames = 0;
-							this.start = Date.now();
-
-						}
-						this.lastPaint = Date.now();
-						this.debug(get_digits(this.framerate, 3) + " fps");
-						this.drawDebug();
-						this.swapsies();
-					},
-					'swapsies': function() {
-						this.canvas = this.canvii[this.canvIdx];
-						this.backbufferCanvas = this.canvii[1 - this.canvIdx];
-
-						this.canvIdx = 1 - this.canvIdx;
-
-						this.context = this.canvas.getContext('2d');
-						this.backbufferContext = this.backbufferCanvas.getContext('2d');
-						this.canvas.style.visibility = 'visible';
-						this.backbufferCanvas.style.visibility = 'hidden';
-						this.backbufferContext.clearRect(0,0,this.width, this.height);
-					},
-					'debug': function(obj) {
-						if(_.isPrimitive(obj)) {
-							this._debugLines.push(obj);
-						} else if(_.isObject(obj)) {
-							var self = this;
-							this._debugLines.push('object {');
-							_.each(obj, this.debugObject);
-							this._debugLines.push('}');
-						}
-					},
-					'_debugObject': function(v, k, l, indent) {
-						indent = indent || 1;
-						var tabs = _.repeatStr("  ", indent);
-						if(_.isArray(v) && _.all(v, _.isPrimitive)) {
-							this._debugLines.push(tabs + k + ': [' + v.map(this.debugPrimitive).join(', ') + ']');
-						} else if(_.isObject(v) || _.isArray(v)) {
-							if(_.isArray(v)){
-								var syms = ['{', '}'];
-							} else {
-								var syms = ['[', ']'];
-							}
-							this._debugLines.push(tabs + k + ': ' + syms[0]);
-							_.each(v, function(v, k, l) { this.debugObject(v, k, l, indent + 1) }, this);
-							this._debugLines.push(tabs + syms[1]);
-						} else {
-							this._debugLines.push(tabs + k + ': ' + this.debugPrimitive(v));
-						}
-					},
-					'debugPrimitive': function(v) {
-						if(_.isString(v)) {
-							return '"' + v + '"';
-						} else {
-							return v.toString();
-						}
-					},
-					'printDebug': function() {
-						console.log(this._debugLines.join("\n"));
-						this.debugLines = [];
-					},
-					'drawDebug': function() {
-						var pos = 15;
-						this.backbufferContext.font = '10px courier';
-						_.each(this._debugLines, function(v) {
-							this.backbufferContext.fillText(v, 5, pos);	
-							pos += 18;
-						}, this);
-						this._debugLines = [];
-					}
-				});
-
-				var InputManager = inherits(function() { }, {
-					// from jQuery UI: https://github.com/jquery/jquery-ui/blob/master/ui/jquery.ui.core.js --thanks guys!
-					'Keys': {
-						'BACKSPACE': 8,
-						'COMMA': 188,
-						'DELETE': 46,
-						'DOWN': 40,
-						'END': 35,
-						'ENTER': 13,
-						'ESCAPE': 27,
-						'HOME': 36,
-						'LEFT': 37,
-						'NUMPAD_ADD': 107,
-						'NUMPAD_DECIMAL': 110,
-						'NUMPAD_DIVIDE': 111,
-						'NUMPAD_ENTER': 108,
-						'NUMPAD_MULTIPLY': 106,
-						'NUMPAD_SUBTRACT': 109,
-						'PAGE_DOWN': 34,
-						'PAGE_UP': 33,
-						'PERIOD': 190,
-						'RIGHT': 39,
-						'SPACE': 32,
-						'TAB': 9,
-						'UP': 38
-					},
-					'_keysDown': {},
-					'constructor': function() {
-						window.addEventListener('keydown', _.bind(this._onkeydown, this));
-						window.addEventListener('keyup', _.bind(this._onkeyup, this));
-					},
-					'_onkeydown': function(ev) {
-						this._keysDown[ev.which] = true;
-					},
-					'_onkeyup': function(ev) {
-						this._keysDown[ev.which] = false;
-					},
-					'keyDown': function(key) {
-						return !!this._keysDown[key];
-					}
-				});
-
-				var Drawable = inherits(function() { }, {
-					'state': { x: 0, y: 0, vX: 0, vY: 0 },
-					//todo: do we need this?
-					'initialState': { },
-					'constructor': function(initialState) {
-						this.state = _.extend({}, this.state, initialState);
-						this.initialState = _.extend({}, this.initialState, this.state);
-					},
-					'draw': function(dT, game) {
-						var centroid = {
-							x: this.state.vX * dT + this.state.x,
-							y: this.state.vY * dT + this.state.y,
-						};
-
-						this.doDraw(centroid, dT, game);
-
-						this.state.x = centroid.x;
-						this.state.y = centroid.y;
-					},
-					'doDraw': function(centroid, dT, game) {
-						game.backbufferContext.beginPath(centroid.x, centroid.y);
-						game.backbufferContext.arc(centroid.x - 5, centroid.y - 5, 10, 0,  2 * Math.PI);
-						game.backbufferContext.stroke();
-					}
-				});
-
-				var Background = inherits(Drawable, {
+				Falling.Background = _.inherits(Falling.Drawable, {
 					'image': null,
 					'ready': false,
 					'constructor': function(initialState) {
@@ -333,7 +128,7 @@
 					}
 				});
 
-				var Player = inherits(Drawable, {
+				Falling.Player = _.inherits(Falling.Drawable, {
 					'doDraw': function(centroid, dT, game) {
 						if(game.inputManager.keyDown(game.inputManager.Keys.LEFT)) {
 							centroid.x -= 20;
@@ -359,9 +154,7 @@
 					window.msRequestAnimationFrame || 
 					function(func) { window.setTimeout(func, 1000/60); } 
 
-				Falling = {};
-
-				Falling.game = new Game('c');
+				Falling.game = new Falling.Game('c');
 				Falling.game.draw();
 
 				document.getElementById('stop').addEventListener('click', function() {

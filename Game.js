@@ -9,10 +9,11 @@
 		'backbufferContext': null,
 		'lastPaint': null,
 		'objects': [],
-		'gameSpeed': -.25,
 		'canvIdx': 0,
 		'framerate' : 0,
 		'inputManager': null,
+		'obstacleHeight': 15,
+		'obstacles':[],
 		'_debugLines': [],
 		'constructor': function(canvasId) {
 			this.canvii = document.getElementsByTagName('canvas');
@@ -35,18 +36,47 @@
 
 			this.initObjects();
 		},
+		'shouldMakeObstacles' : function() {
+			return this.obstacles.length < 10;
+		},
+		'updateObstacles': function() {
+			this.obstacles = this.obstacles.filter(function(obst) {
+				return !(obst.state.x > this.width || obst.state.x < 0
+					|| (obst.state.y) > this.height || (obst.state.y + obst.height) < 0);
+			}, this);
+
+			if(this.obstacles.length > 0) {
+				var curPos = this.obstacles[this.obstacles.length - 1].state.y + 5 * this.obstacleHeight;
+			} else {
+				var curPos = this.height/2;
+			}
+			while(this.shouldMakeObstacles()) {
+				var width = _.randBetween(80, this.width - 80);
+				this.obstacles.push(new Falling.Obstacle({
+					'holePos': _.randBetween(0, this.width),
+					'height': this.obstacleHeight,
+					'y': curPos,
+				}, this));
+
+				curPos += 5 * this.obstacleHeight
+
+			}
+		},
 		'initObjects': function() {
+			this.initBackground();
+
 			var centerObj = new Falling.Player({
 				x: this.width/2,
 				y: this.height/2
 			});
 			this.objects.push(centerObj);	
 
-			this.initBackground();
+			this.updateObstacles();
+
 		},
 		'initBackground': function() {
-			this.objects.unshift(new Falling.Background({
-				vY:this.gameSpeed,
+			this.objects.push(new Falling.Background({
+				vY:Falling.gameSpeed*2,
 				y: this.height
 			}));
 		},
@@ -54,13 +84,18 @@
 			if(!this.stop && this.objects.length > 1) {
 				window.requestAnimationFrame(this.draw);
 			}
-			var self = this;
+			this.updateObstacles();
+
 			var dT = Date.now() - this.lastPaint;
 			var drawStart = Date.now();
 			this.backbufferContext.clearRect(0, 0, this.width, this.height);
 			this.objects.forEach(function(obj) {
-				obj.draw(dT, self);
-			});
+				obj.draw(dT, this);
+			}, this);
+
+			this.obstacles.forEach(function(obj) {
+				obj.draw(dT, this);
+			}, this);
 
 			this.frames++;
 			if(this.frames % 12 == 0) {

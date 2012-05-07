@@ -43,6 +43,9 @@
 		<script src="http://documentcloud.github.com/underscore/underscore.js"> </script>
 		<script>
 			_.mixin({
+				'randBetween': function(min, max) {
+					return Math.floor(Math.random() * (max - min + 1)) + min;
+				},
 				'round': function(numbah, digitz) {
 					var scalesies = Math.pow(10, digitz);
 					return Math.floor(numbah * scalesies) / scalesies;
@@ -92,7 +95,9 @@
 			});
 		</script>
 		<script>
-			window.Falling = {};
+			window.Falling = {
+				'gameSpeed': -.1,
+			};
 		</script>
 		<script src="Game.js"></script>
 		<script src="Drawable.js"></script>
@@ -128,14 +133,58 @@
 					}
 				});
 
+				Falling.Obstacle = _.inherits(Falling.Drawable, {
+					'segments': [],
+					'constructor': function(spec, game) {
+						this.state = _.extend( { }, this.state, _.pick(spec, ['y']), { vY: Falling.gameSpeed });
+
+						this.height = spec.height;
+
+						this.segments = [];
+						if(spec.holePos < 80) {
+							this.segments.push({
+								'x': 80,
+								'width': game.width - 80
+							});
+						} else if (spec.holePos > (game.width - 80)) {
+							this.segments.push({
+								'x': 0,
+								'width': game.width - 80
+							});
+						} else {
+							this.segments.push({
+								'x': 0,
+								'width': spec.holePos
+							});
+							this.segments.push({
+								'x': spec.holePos + 80,
+								'width': game.width - spec.holePos - 80
+							});
+						}
+					},
+					'doDraw': function(centroid, dT, game) {
+						game.backbufferContext.beginPath();
+
+						this.segments.forEach(function(seg) {
+							game.backbufferContext.moveTo(seg.x, centroid.y);
+							game.backbufferContext.lineTo(seg.x + seg.width, centroid.y);
+							game.backbufferContext.lineTo(seg.x + seg.width, centroid.y + this.height);
+							game.backbufferContext.lineTo(seg.x, centroid.y + this.height);
+							game.backbufferContext.closePath();
+						}, this);
+
+						game.backbufferContext.fill();
+					}
+				});
+
 				Falling.Player = _.inherits(Falling.Drawable, {
 					'doDraw': function(centroid, dT, game) {
 						if(game.inputManager.keyDown(game.inputManager.Keys.LEFT)) {
-							centroid.x -= 20;
+							centroid.x -= 40;
 						}
 
 						if(game.inputManager.keyDown(game.inputManager.Keys.RIGHT)) {
-							centroid.x += 20;
+							centroid.x += 40;
 						}
 						if(centroid.x - 5 < 0) {
 							centroid.x = 20;

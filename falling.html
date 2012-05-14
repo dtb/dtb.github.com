@@ -96,7 +96,8 @@
 		</script>
 		<script>
 			window.Falling = {
-				'gameSpeed': -.1,
+				'gameSpeed': -.05,
+				'G': .001
 			};
 		</script>
 		<script src="Game.js"></script>
@@ -116,18 +117,18 @@
 						}, this);
 						this.image.src = 'game-bg.jpg';
 					},
-					'doDraw': function(centroid, dT, game) {
+					'draw': function(dT, game) {
 						if(!this.ready) return;
-						if(centroid.y <= 0) 
-							centroid.y = game.height;
+						if(this.state.y <= 0) 
+							this.state.y = game.height;
 
-						var topSegment = this.image.naturalHeight - centroid.y;
+						var topSegment = this.image.naturalHeight - this.state.y;
 
-						game.backbufferContext.drawImage(this.image, 0, topSegment, this.image.naturalWidth, centroid.y, 0, 0, game.width, centroid.y);
+						game.backbufferContext.drawImage(this.image, 0, topSegment, this.image.naturalWidth, this.state.y, 0, 0, game.width, this.state.y);
 						game.backbufferContext.drawImage(this.image, 
 							/* sx */0, /* sy */ 0, 
 							/* sw */ this.image.naturalWidth, /* sh */ topSegment, 
-							/* dx */ 0,  /* dy */ centroid.y,
+							/* dx */ 0,  /* dy */ this.state.y,
 							/* dw */ game.width, /* dh */ topSegment
 						);
 					}
@@ -162,14 +163,14 @@
 							});
 						}
 					},
-					'doDraw': function(centroid, dT, game) {
+					'draw': function(dT, game) {
 						game.backbufferContext.beginPath();
 
 						this.segments.forEach(function(seg) {
-							game.backbufferContext.moveTo(seg.x, centroid.y);
-							game.backbufferContext.lineTo(seg.x + seg.width, centroid.y);
-							game.backbufferContext.lineTo(seg.x + seg.width, centroid.y + this.height);
-							game.backbufferContext.lineTo(seg.x, centroid.y + this.height);
+							game.backbufferContext.moveTo(seg.x, this.state.y);
+							game.backbufferContext.lineTo(seg.x + seg.width, this.state.y);
+							game.backbufferContext.lineTo(seg.x + seg.width, this.state.y + this.height);
+							game.backbufferContext.lineTo(seg.x, this.state.y + this.height);
 							game.backbufferContext.closePath();
 						}, this);
 
@@ -178,22 +179,41 @@
 				});
 
 				Falling.Player = _.inherits(Falling.Drawable, {
-					'doDraw': function(centroid, dT, game) {
+					'hasGravity': true,
+					'update': function(dT, game) {
 						if(game.inputManager.keyDown(game.inputManager.Keys.LEFT)) {
-							centroid.x -= 40;
+							this.state.x -= 40;
 						}
 
 						if(game.inputManager.keyDown(game.inputManager.Keys.RIGHT)) {
-							centroid.x += 40;
-						}
-						if(centroid.x - 5 < 0) {
-							centroid.x = 20;
-						}
-						if(centroid.x + 5 >= game.width) {
-							centroid.x = game.width - 6;
+							this.state.x += 40;
 						}
 
-						this.constructor.__super__.doDraw.call(this, centroid, dT, game);
+						if(this.state.x - 10 < 0) {
+							this.state.x = 11;
+						}
+
+						if(this.state.x + 10 >= game.width) {
+							this.state.x = game.width - 11;
+						}
+
+						this.constructor.__super__.update.call(this, dT, game);
+					},
+					'checkCollision': function(obst) {
+						if(Math.abs(this.state.y - obst.state.y) <= 11) {
+							var segCollisions = obst.segments.map(function(seg) {
+								return this.state.x > seg.x && this.state.x < (seg.x + seg.width);
+							}, this);
+
+							return segCollisions.some(function(c) { return c; });
+						}
+
+						return false;
+					},
+					'handleCollision': function(obst) {
+						this.stroke = 'red';
+						this.state.vY = obst.state.vY;
+						this.state.y = obst.state.y - 10;
 					}
 				});
 
@@ -204,7 +224,7 @@
 					function(func) { window.setTimeout(func, 1000/60); } 
 
 				Falling.game = new Falling.Game('c');
-				Falling.game.draw();
+				Falling.game.loop();
 
 				document.getElementById('stop').addEventListener('click', function() {
 					Falling.game.stop = true;

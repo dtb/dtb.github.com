@@ -7,7 +7,7 @@
 		'context': null,
 		'backbufferCanvas': null,
 		'backbufferContext': null,
-		'lastPaint': null,
+		'lastUpdate': null,
 		'objects': [],
 		'canvIdx': 0,
 		'framerate' : 0,
@@ -15,6 +15,7 @@
 		'obstacleHeight': 15,
 		'obstacles':[],
 		'_debugLines': [],
+		'player': null,
 		'constructor': function(canvasId) {
 			this.canvii = document.getElementsByTagName('canvas');
 
@@ -23,14 +24,14 @@
 			this.width = this.canvas.width;
 			this.height = this.canvas.height;
 
-			this.draw = _.bind(this._draw, this);
-			this.debugObject = _.bind(this._debugObject, this);
+			this.debugObject = _(this._debugObject).bind(this);
+			this.loop = _(this._loop).bind(this);
 
 			this.frames = 0;
 			this.times = [];
 			this.start = Date.now();
 
-			this.lastPaint = Date.now();
+			this.lastUpdate = Date.now();
 
 			this.inputManager = new Falling.InputManager();
 
@@ -65,46 +66,59 @@
 		'initObjects': function() {
 			this.initBackground();
 
-			var centerObj = new Falling.Player({
+			this.player = new Falling.Player({
 				x: this.width/2,
 				y: this.height/2
 			});
-			this.objects.push(centerObj);	
+			this.objects.push(this.player);	
 
 			this.updateObstacles();
 
 		},
 		'initBackground': function() {
-			this.objects.push(new Falling.Background({
+			this.background = new Falling.Background({
 				vY:Falling.gameSpeed*2,
 				y: this.height
-			}));
+			});
+			this.objects.push(this.background);
 		},
-		'_draw': function() {
-			if(!this.stop && this.objects.length > 1) {
-				window.requestAnimationFrame(this.draw);
-			}
-			this.updateObstacles();
-
-			var dT = Date.now() - this.lastPaint;
+		'_loop': function() {
+			var dT = Date.now() - this.lastUpdate;
 			var drawStart = Date.now();
-			this.backbufferContext.clearRect(0, 0, this.width, this.height);
-			this.objects.forEach(function(obj) {
-				obj.draw(dT, this);
+
+			if(!this.stop && this.objects.length > 1) {
+				window.requestAnimationFrame(this.loop);
+			}
+
+			this.updateObstacles();
+			this.obstacles.forEach(function(obst) {
+				if(this.player.checkCollision(obst)) {
+					this.player.handleCollision(obst);
+				}
 			}, this);
 
-			this.obstacles.forEach(function(obj) {
-				obj.draw(dT, this);
-			}, this);
+			this.background.update(dT, this);
+			this.player.update(dT, this);
+			_(this.obstacles).invoke('update', dT, this);
+
+			this.draw(dT);
+
+			this.lastUpdate = Date.now();
+		},
+		'draw': function(dT) {
+
+			this.backbufferContext.clearRect(0, 0, this.width, this.height);
+
+			_(this.objects).invoke('draw', dT, this);
+			_(this.obstacles).invoke('draw', dT, this);
 
 			this.frames++;
 			if(this.frames % 12 == 0) {
 				this.framerate = this.frames*1000/(Date.now() - this.start);
 				this.frames = 0;
 				this.start = Date.now();
-
 			}
-			this.lastPaint = Date.now();
+
 			this.debug(_.round(this.framerate, 3) + " fps");
 			this.drawDebug();
 			this.swapsies();

@@ -53,6 +53,9 @@
 				'isPrimitive': function(val) {
 					return _.isString(val) || _.isNumber(val);
 				},
+				'sign': function(x) {
+					return Math.abs(x) / x;
+				},
 				'repeatStr': function(str, times) {
 					return new Array(times + 1).join(str);
 				},
@@ -96,8 +99,8 @@
 		</script>
 		<script>
 			window.Falling = {
-				'gameSpeed': -.05,
-				'G': .001
+				'gameSpeed': -.1,
+				'G': .005
 			};
 		</script>
 		<script src="Game.js"></script>
@@ -179,25 +182,35 @@
 				});
 
 				Falling.Player = _.inherits(Falling.Drawable, {
+					'acceleration': .005,
+					'maxSpeed':.8,
 					'hasGravity': true,
 					'update': function(dT, game) {
 						if(game.inputManager.keyDown(game.inputManager.Keys.LEFT)) {
-							this.state.x -= 40;
+							this.state.vX -= this.acceleration * dT;
+						} else if(game.inputManager.keyDown(game.inputManager.Keys.RIGHT)) {
+							this.state.vX += this.acceleration * dT;
+						} else if(Math.abs(this.state.vX) > 2 * this.acceleration * dT) {
+							this.state.vX -= _.sign(this.state.vX)  * 2 * this.acceleration * dT;
+						} else {
+							this.state.vX = 0;
+						}
+						
+						if(Math.abs(this.state.vX) > this.maxSpeed) {
+							this.state.vX = _.sign(this.state.vX) * this.maxSpeed;
 						}
 
-						if(game.inputManager.keyDown(game.inputManager.Keys.RIGHT)) {
-							this.state.x += 40;
-						}
+						this.constructor.__super__.update.call(this, dT, game);
 
 						if(this.state.x - 10 < 0) {
 							this.state.x = 11;
+							this.state.vX = 0;
 						}
 
 						if(this.state.x + 10 >= game.width) {
 							this.state.x = game.width - 11;
+							this.state.vX = 0;
 						}
-
-						this.constructor.__super__.update.call(this, dT, game);
 					},
 					'checkCollision': function(obst) {
 						if(Math.abs(this.state.y - obst.state.y) <= 11) {

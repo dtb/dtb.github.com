@@ -77,7 +77,7 @@
 		},
 		'initBackground': function() {
 			this.background = new Falling.Background({
-				vY:Falling.gameSpeed*2,
+				vY:Falling.gameSpeed,
 				y: this.height
 			});
 			this.objects.push(this.background);

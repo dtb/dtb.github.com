@@ -5,6 +5,8 @@ title: Manipulating the caret (text cursor) using the Win32 API
 
 # Manipulating the caret (text cursor) using the Win32 API
 
+<span class="pubdate">published 19 jun 2011</span>
+
 I recently dealt with a case where I wanted to automatically format user's text as they type it. 
 For example, if the user is typing a phone number, they
 might type “9595551234”, and as they type, their text would be formatted as such

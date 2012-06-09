@@ -5,6 +5,8 @@ title: Debugging Firefox Extensions the Easy Way
 
 # Debugging Firefox Extensions the Easy Way
 
+<span class="pubdate">published 9 apr 2011</span>
+
 While testing a REST API I was working on, I discovered an OAuth bug in the otherwise-excellent [Restclient][restclient] Firefox extension. I knew it would be an easy fix, but the information on how on the internet about how to debug a Firefox extension was geared toward hardcore developers working on something from the ground-up, not the dabbler. I eventually figured out how to do it (and that it was incredibly easy), and  thought I'd share my experience with the world. 	
 
 ## Crack the XPI

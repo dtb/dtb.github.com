@@ -13,6 +13,8 @@ canvas {
 
 # Drawing Simple Particle Systems with HTML5's Canvas Tag
 
+<span class="pubdate">published 22 jun 2011</span>
+
 Inspired by [this awesome series of articles][insp] on BIT-101 (Keith Peters' blog, which I found via a tweet from Paul Irish)
 intended to introduce Flash developers to `<canvas>`, I finally decided to get down to learning some canvas tag for myself. 
 Here's a few things I made.

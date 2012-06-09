@@ -16,6 +16,7 @@ h1, h2, h3, h4, h5, h6 {
 	text-transform:lowercase;
 }
 h1 {
+	font-weight:normal;
 	text-align:center;
 	font-size: 40px;
 	font-family:"Justus Roman", serif;
@@ -87,14 +88,14 @@ footer ul li:before {
 	font-style:italic;
 }
 footer, footer a {
-	color: #d2d2bd;
+	color: #BBBCAA;
 	-webkit-transition: color .25s ease-in-out;
 	   -moz-transition: color .25s ease-in-out;
 	     -o-transition: color .25s ease-in-out;
 	    -ms-transition: color .25s ease-in-out;
 	        transition: color .25s ease-in-out;
 }
-footer a:hover{
+footer a:hover {
 	color: #9F9F7D;
 }
 #wheretofindme {

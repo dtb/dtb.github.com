@@ -20,7 +20,7 @@ To test the performance of this method and the usual unsafe method, I wrote two 
 
 The first method, listed below, uses the IntPtr approach.
 
-{% highlight c# %}
+{% highlight csharp %}
 /*No unsafe keyword!*/
 public Image ThresholdMA(float thresh)
 {
@@ -68,7 +68,7 @@ public Image ThresholdMA(float thresh)
 
 The second method uses pointers.
 
-{% highlight c# %}
+{% highlight csharp %}
 /*Note unsafe keyword*/
 public unsafe Image ThresholdUA(float thresh)
 {
@@ -112,3 +112,5 @@ public unsafe Image ThresholdUA(float thresh)
 
 
 That basically covers the code and approach. In Part II (tomorrow, I promise!!), I'll post a full .sln and results of the comparison.
+
+Go read [Part II](/blog/2008/03/14/c-image-processing-performance-unsafe-vs-safe-code-part-ii/) for another approach, and the performance data!

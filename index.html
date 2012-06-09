@@ -13,11 +13,13 @@ title: david thomas bernal
 			Every now and then, I write an article. Here are the most-recent five:
 		</p>
 		<ul id="posts">
-			{% for post in site.posts limit:5 %}
-			<li>
-				<span class="date">{{ post.date | date: "%d %b %Y" }}</span>
-				<a href="{{ post.url }}">{{ post.title }}</a>
-			</li>
+			{% for post in site.posts limit:6 %}
+                {% unless post.draft %}
+                <li>
+                    <span class="date">{{ post.date | date: "%d %b %Y" }}</span>
+                    <a href="{{ post.url }}">{{ post.title }}</a>
+                </li>
+                {% endunless %}
 			{% endfor %}
 		</ul>
 		<p id="allposts">

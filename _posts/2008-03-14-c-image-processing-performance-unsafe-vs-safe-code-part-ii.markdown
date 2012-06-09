@@ -9,7 +9,7 @@ title: C# Image Processing Performance - Unsafe vs. Safe code, Part II
 
 In <a href="http://davidthomasbernal.com/blog/2008/03/13/c-image-processing-performance-unsafe-vs-safe-code-part-i">Part I of this article</a>, I outlined a method of performing pixel-level operations on an image that required neither unsafe code, nor the use of the <code>GetPixel</code> and <code>SetPixel</code> methods, which are notoriously slow. The one thing I neglected to include was an actual comparison of the <code>IntPtr</code> and pointer methods with the <code>GetPixel\SetPixel</code> methods. As such, I present such a method below. It looks tantalizingly simple, but we'll soon see that it is basically worthless.
 
-{% highlight c# %}
+{% highlight csharp %}
 public Image ThresholdGS(float thresh)
 {
 	Bitmap b = new Bitmap(_image);
@@ -131,8 +131,8 @@ I wrote up a simple test program to perform these tests. It also includes a subj
 
 If you poke around in the program a bit, you'll also discover a couple of extras, including some tests of using a square-root-of-squares type method for finding the magnitude of a pixel (applied to thresholding, and grayscaling). There is also a method that allows convolution filters to be applied to the image, though editing the filters is very cumbersome. Expect to see new, more-complete versions this program in the future.
 
-The program and code are attached. The code includes a .sln file. To run the program (if you don't download the code), just unzip the .dll and .exe into any directory on your system. To load an image, drag and drop one onto the big empty picture box from your filesystem. You can start the tool I used to generate the numbers by clicking the performance analysis button. <del>If you modify the program in any non-trivial way, or use it or the image processing library in anything else, please notify me. You may not use either the program or the library to make a profit in any way without my express written permission.</del> The code is in the public domain!
+<a href="https://github.com/dtb/CSharp-Image-Processing-Sample">The code is now available on GitHub.</a>
 
-<div style="width:30%;margin:0 auto;border:2px dotted black;text-align:center"><a href='http://davidthomasbernal.com/wp-content/uploads/2008/03/shockexecutable.zip' title='Executable'>Executable</a>
-<a href='http://davidthomasbernal.com/wp-content/uploads/2008/03/shock.zip' title='Code'>Code</a>
-</div>
+Most of the code from this series is in [Process.cs](https://github.com/dtb/CSharp-Image-Processing-Sample/blob/master/ImageProcessor/Process.cs)
+
+

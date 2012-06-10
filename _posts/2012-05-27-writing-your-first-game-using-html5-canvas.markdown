@@ -45,6 +45,8 @@ canvas{
 
 # Writing <del>your</del> <del>my</del> our first game using html5 and canvas
 
+<span class="pubdate">published 9 jun 2012</span>
+
 I recently started writing my first game using html5 and canvas, and thought
 I would turn it into a series of blog posts. This tutorial series should be 
 great for people who comfortable with programming javascript and are interested

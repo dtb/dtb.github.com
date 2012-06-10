@@ -227,12 +227,7 @@ window.requestAnimationFrame =
 // Now simply start the game by initializing it and calling the draw method.
 //
 // It can be stopped by setting `game.stop` to true.
-var game = new Game();
-game.draw();
 
-document.getElementByid('stop').onclick = function() {
-	game.stop = true;
-};
 
 // That's all the code so far! 
 //

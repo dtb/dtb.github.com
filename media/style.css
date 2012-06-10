@@ -47,6 +47,9 @@ pre {/* punting on this for now */
 	padding:.5em;
 	font-family: "monaco", "consolas", monospace;
 }
+li p {
+	margin:.3em 0;
+}
 ul#posts {
 	list-style:none;
 	padding-left:0;

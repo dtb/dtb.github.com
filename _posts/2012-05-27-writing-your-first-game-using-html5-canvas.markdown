@@ -1,10 +1,9 @@
 ---
 layout: post
 title: Writing your first game using html5 and canvas
-draft: true
 styles: "
 article img {
-    border:1px solid #333;
+    border:1px solid #CCC;
 }
 canvas{
     position:absolute;
@@ -15,7 +14,7 @@ canvas{
 #sample1 {
     width:980px;
     height:551px;
-    border:1px solid #ccc;
+    border:1px inset #ccc;
     position:relative;
     margin-left:-190px;
 }
@@ -101,7 +100,8 @@ function game() {
 
 ## Getting started
 
-Now, we want to fill in some of the objects we'll use to structure our game. First is
+Now, we want to fill in some of the objects we'll use to structure our game. If you'd like
+more detail, check out the [annotated source](/posts/game/week1/docs/week1.html). First is
 the `Game` object, which manages all the objects in the game, runs the animation loop, 
 and provides the interface to the game from the outside world.
 
@@ -122,7 +122,10 @@ var Game = _.inherits(function() { }, {
 {% endhighlight %}
 
 Next, is the `Drawable` object, which provides a simple interface to be drawn to the 
-canvas. It is the prototype ("base class") for all drawable objects.
+canvas. This object allows the `Game` to draw all drawable objects without caring about
+the specific implementation or appearance of the object. It also gives us a common place
+to put drawing and update related functionality. It is the prototype ("base class") for 
+all drawable objects.
 
 
 {% highlight javascript %}
@@ -186,7 +189,7 @@ var Background = _.inherits(Drawable, {
         // and second the bottom slice 
         game.backbufferContext.drawImage(
             this.image, 
-            /* sx */0, /* sy */ 0, 
+            /* sx */ 0, /* sy */ 0, 
             /* sw */ this.image.naturalWidth,
             /* sh */ this.image.naturalHeight - centroid.y, 
             /* dx */ 0,
@@ -199,7 +202,7 @@ var Background = _.inherits(Drawable, {
 {% endhighlight %}
 
 At this point, we have a nice structure for a game, and an animating background to boot.
-You can read the full annotated source for the game  thus far [here](here), and here it 
+If you'd like, you can read the full, [annotated source for the game](/posts/game/week1/docs/week1.html), and here it 
 is in action:
 
 
@@ -214,7 +217,8 @@ is in action:
     <button id="stop">◼ Stop</button>
 </div>
 <script src="http://documentcloud.github.com/underscore/underscore-min.js"> </script>
-<script src="/posts/game/week1.js"> </script>
+<script src="/posts/game/week1/week1-util.js"> </script>
+<script src="/posts/game/week1/week1.js"> </script>
 <script>
     var game = new Game();
     document.getElementById('shim').onclick = function() {
@@ -231,3 +235,22 @@ is in action:
 
 As a "game" this is obviously quite dissatisfactory. Next we'll add input handling, so 
 the player can move, and then obstacles and collision detection.
+
+## Resources
+
+I'll try to put together a list of helpful resources each week. For this week:
+
+- This [HTML5 Canvas Cheat Sheet](http://blog.nihilogic.dk/2009/02/html5-canvas-cheat-sheet.html) 
+  for a quick reference on `canvas`. This is always open in a tab when I'm working on 
+  canvas stuff.
+- In case you missed it, the full [annotated source](/posts/game/week1/docs/week1.html) for this game so far.
+- MDN's [Canvas tutorials](https://developer.mozilla.org/en/Canvas_tutorial) for a basic
+  introduction to drawing with the 2d context. Their [Using images](https://developer.mozilla.org/en/Canvas_tutorial/Using_images) page
+  in particular has some helpful images for understanding image slicing.
+- The [canvas 2dcontext spec](http://www.w3.org/TR/2dcontext/) from the w3, for when you need 
+  to know *exactly* what your code should do.
+- The [annotated source](http://documentcloud.github.com/backbone/docs/backbone.html) for
+  thinking about prototypal inheritance in js, especially the 
+  [inherits method](http://documentcloud.github.com/backbone/docs/backbone.html#section-176).
+- [Douglas Crockfords take](http://javascript.crockford.com/prototypal.html) on protypal
+  inheritance in JS.

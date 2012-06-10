@@ -1,0 +1,61 @@
+<!DOCTYPE html>  <html> <head>
+<script>
+
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-22566740-1']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+	if(window.location.host.toLowerCase() != "davidthomasbernal.com")
+		return;
+	
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+<title>week1-util.js</title>   <meta http-equiv="content-type" content="text/html; charset=UTF-8">   <link rel="stylesheet" media="all" href="docco.css" /> </head> <body>   <div id="container">     <div id="background"></div>          <table cellpadding="0" cellspacing="0">       <thead>         <tr>           <th class="docs">             <h1>               week1-util.js             </h1>           </th>           <th class="code">           </th>         </tr>       </thead>       <tbody>                               <tr id="section-1">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-1">&#182;</a>               </div>               <p>We use <a href="http://documentcloud.github.com/underscore/">underscore.js</a> to get some handy
+
+
+ functionality. <code>_.mixin</code> allows us to specify an object containing methods to add to 
+ underscore.</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nx">_</span><span class="p">.</span><span class="nx">mixin</span><span class="p">({</span></pre></div>             </td>           </tr>                               <tr id="section-2">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-2">&#182;</a>               </div>               <p>Get a random number between <code>min</code> and <code>max</code></p>             </td>             <td class="code">               <div class="highlight"><pre>    <span class="s1">&#39;randBetween&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">min</span><span class="p">,</span> <span class="nx">max</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="p">(</span><span class="nx">max</span> <span class="o">-</span> <span class="nx">min</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="o">+</span> <span class="nx">min</span><span class="p">;</span>
+    <span class="p">},</span></pre></div>             </td>           </tr>                               <tr id="section-3">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-3">&#182;</a>               </div>               <p>Round <code>numbah</code> to a specified number of of <code>digits</code></p>             </td>             <td class="code">               <div class="highlight"><pre>    <span class="s1">&#39;round&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">numbah</span><span class="p">,</span> <span class="nx">digitz</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">scalesies</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="nx">digitz</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">numbah</span> <span class="o">*</span> <span class="nx">scalesies</span><span class="p">)</span> <span class="o">/</span> <span class="nx">scalesies</span><span class="p">;</span>
+    <span class="p">},</span></pre></div>             </td>           </tr>                               <tr id="section-4">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-4">&#182;</a>               </div>               <p>Returns true if the value is a scalar type</p>             </td>             <td class="code">               <div class="highlight"><pre>    <span class="s1">&#39;isPrimitive&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">_</span><span class="p">.</span><span class="nx">isString</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="o">||</span> <span class="nx">_</span><span class="p">.</span><span class="nx">isNumber</span><span class="p">(</span><span class="nx">val</span><span class="p">);</span>
+    <span class="p">},</span></pre></div>             </td>           </tr>                               <tr id="section-5">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-5">&#182;</a>               </div>               <p>Returns the sign of the given value</p>             </td>             <td class="code">               <div class="highlight"><pre>    <span class="s1">&#39;sign&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">abs</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="o">/</span> <span class="nx">x</span><span class="p">;</span>
+    <span class="p">},</span></pre></div>             </td>           </tr>                               <tr id="section-6">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-6">&#182;</a>               </div>               <p>Repeats a string <code>str</code> <code>times</code> times</p>             </td>             <td class="code">               <div class="highlight"><pre>    <span class="s1">&#39;repeatStr&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">str</span><span class="p">,</span> <span class="nx">times</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">times</span> <span class="o">+</span> <span class="mi">1</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span>
+    <span class="p">},</span></pre></div>             </td>           </tr>                               <tr id="section-7">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-7">&#182;</a>               </div>               <p>Sets up the inheritance chain so that the second argument's prototype is the 
+first argument. This is from <a href="http://documentcloud.github.com/backbone/docs/backbone.html">backbone.js</a>,
+see their <a href="http://documentcloud.github.com/backbone/docs/backbone.html#section-176">annotated source</a> for more info.</p>             </td>             <td class="code">               <div class="highlight"><pre>    <span class="s1">&#39;inherits&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">parent</span><span class="p">,</span> <span class="nx">protoProps</span><span class="p">,</span> <span class="nx">staticProps</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">child</span><span class="p">;</span>
+
+        <span class="kd">var</span> <span class="nx">ctor</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){};</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">protoProps</span> <span class="o">&amp;&amp;</span> <span class="nx">protoProps</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s1">&#39;constructor&#39;</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nx">child</span> <span class="o">=</span> <span class="nx">protoProps</span><span class="p">.</span><span class="nx">constructor</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">child</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span> <span class="p">};</span>
+        <span class="p">}</span>
+
+        <span class="nx">_</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">child</span><span class="p">,</span> <span class="nx">parent</span><span class="p">);</span>
+
+        <span class="nx">ctor</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
+        <span class="nx">child</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ctor</span><span class="p">();</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">protoProps</span><span class="p">)</span> <span class="nx">_</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">child</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span> <span class="nx">protoProps</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">staticProps</span><span class="p">)</span> <span class="nx">_</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">child</span><span class="p">,</span> <span class="nx">staticProps</span><span class="p">);</span>
+
+        <span class="nx">child</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">=</span> <span class="nx">child</span><span class="p">;</span>
+
+        <span class="nx">child</span><span class="p">.</span><span class="nx">__super__</span> <span class="o">=</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
+
+        <span class="k">return</span> <span class="nx">child</span><span class="p">;</span>
+    <span class="p">},</span>
+<span class="p">});</span></pre></div>             </td>           </tr>                               <tr id="section-8">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-8">&#182;</a>               </div>               <p><a href="/blog/2012/05/27/writing-your-first-game-using-html5-canvas/">↩ return to the post</a></p>
+
+<p><a href="week1.html">↩ return to the the game code in week1.js</a></p>             </td>             <td class="code">               <div class="highlight"><pre></pre></div>             </td>           </tr>                </tbody>     </table>   </div> </body> </html> 

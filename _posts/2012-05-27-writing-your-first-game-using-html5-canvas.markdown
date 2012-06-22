@@ -47,36 +47,33 @@ canvas{
 
 <span class="pubdate">published 9 jun 2012</span>
 
-I recently started writing my first game using html5 and canvas, and thought
-I would turn it into a series of blog posts. This tutorial series should be 
-great for people who comfortable with programming javascript and are interested
-in making interactive toys using HTML5's canvas tag.
+I recently decided to write an HTML5 game using the `canvas` tag. I'd made some little animated toys using `canvas` 
+with my [particle systems](/blog/2011/06/22/drawing-simple-particle-systems-with-html5-canvas-tag/),
+but now I wanted to do something bigger and more interactive. Even on the small projects 
+before, the code had a habit of turning into a horrible fucking mess of procedural crap 
+that was too hard to follow. I couldn't imagine building something more ambitious in that 
+same ad-hoc style.
 
-This game will allow us to learn about many of the basic elements of a game:
+Like everything that can be accomplished with programming, I've always assumed I know how
+to write a game. After all, I know to program. The rest is just filling in the details. 
+With this game, I decided to put that theory to the test. 
 
-1. Simple graphics
-1. Animation
-3. Handling input from the player
-2. Simple collision detection
+## Choosing my first game
 
-## Choosing our first game
-
-For our first game, we want to write something simple that will touch on all the 
-basic aspects of a game. The game I picked is a
+For my first game, I wanted to write something simple, but still with the key components of
+a game, like animation, collision detection, and player input. I picked a
 game I remembered played on my TI-83 calculator in high school:
 
 ![game concept.](/media/falling.mockup.jpeg)
 
-In the game, you control the blue circle. Your goal is to continue falling through the 
-gaps in the moving platforms as long as you can without hitting the spikes on the
-ceiling. This game isn't going to knock anyone's socks off, but I wasted a reasonable 
-amount of time in math class playing it, which is a pretty good target to shoot for on a 
-first game.
+In the game, you control the blue circle. As the platforms move up, you have to steer yourself
+into the gaps to avoid getting crushed to a poorly-rendered red pulp by the spikes.
 
 ## Structuring a game
 
-The first thing we want to do is establish a basic structure and then we'll get some 
-movement going. The structure of a game in pseudo-code is as follows:
+The structure of a game in pseudo-code is as follows. In reality, we want to split the 
+game up into some nice objects, so that it's clearer who plays what role, but this is the 
+basic skeleton.
 
 {% highlight javascript %}
 function game() {
@@ -103,9 +100,10 @@ function game() {
 ## Getting started
 
 Now, we want to fill in some of the objects we'll use to structure our game. If you'd like
-more detail, check out the [annotated source](/posts/game/week1/docs/week1.html). First is
-the `Game` object, which manages all the objects in the game, runs the animation loop, 
-and provides the interface to the game from the outside world.
+more detail, check out the [annotated source](/posts/game/week1/docs/week1.html).
+
+Much of the skeleton we saw before is reflected in the `Game` object. The Game object
+is the boss that handles coordinating the objects and running the animation loop. 
 
 {% highlight javascript %}
 // _.inherits sets up the prototype chain, so that the first argument 
@@ -123,12 +121,10 @@ var Game = _.inherits(function() { }, {
 });
 {% endhighlight %}
 
-Next, is the `Drawable` object, which provides a simple interface to be drawn to the 
-canvas. This object allows the `Game` to draw all drawable objects without caring about
-the specific implementation or appearance of the object. It also gives us a common place
-to put drawing and update related functionality. It is the prototype ("base class") for 
-all drawable objects.
-
+Like any good leader, the Game object delegates the detail work to various specialists
+that know exactly how to do their jobs. The `Drawable` object specializes in—surprise!—drawing.
+The `Game` can draw all the objects in our world without caring about the specific way that happens.
+Drawable also forms the prototype for more-specialized drawing objects.
 
 {% highlight javascript %}
 var Drawable = _.inherits(function() { }, {
@@ -150,7 +146,7 @@ var Drawable = _.inherits(function() { }, {
 });
 {% endhighlight %}
 
-Finally, an example `Drawable` instance is the `Background` object, which handles drawing
+An example of a specialized `Drawable` is the `Background` object, which handles drawing
 the scrolling background for the game.
 
 {% highlight javascript %}
@@ -235,12 +231,12 @@ is in action:
 
 ## Next steps
 
-As a "game" this is obviously quite dissatisfactory. Next we'll add input handling, so 
-the player can move, and then obstacles and collision detection.
+At this point, if I told you this was a game, you'd call me a goddamn liar. Next we'll add 
+input handling, so the player can move, and then obstacles and collision detection.
 
 ## Resources
 
-I'll try to put together a list of helpful resources each week. For this week:
+Here's the best of the million tabs I had open while I was doing this first part of the game.
 
 - This [HTML5 Canvas Cheat Sheet](http://blog.nihilogic.dk/2009/02/html5-canvas-cheat-sheet.html) 
   for a quick reference on `canvas`. This is always open in a tab when I'm working on 

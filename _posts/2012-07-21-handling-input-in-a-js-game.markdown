@@ -23,7 +23,7 @@ part is keeping track of what the actual input is—in this case, what keyboard 
 and the second is reacting to that input. For this game, I created an `InputManager` object
 to track the input, and then the `Player` or `Drawable` objects can react accordingly.
 
-Handling input is actually really easy. All we need to do is add a listener on `keydown`
+Handling input is actually really easy. All we need to do is add a listener on the window or canvas' `keydown` event
 that stores the key being pressed, and then another listener on `keyup` that removes that 
 key from the list of active keys. The `InputManager` is below:
 
@@ -62,8 +62,8 @@ var InputManager = inherits(function() { }, {
     window.addEventListener('keyup', _.bind(this._onkeyup, this));
   },
   '_onkeydown': function(ev) {
-  	// ev is the event object, and it has the "which" member,
-  	// that says which key is pressed.
+    // ev is the event object, and it has the "which" member,
+    // that says which key is pressed.
     this._keysDown[ev.which] = true;
   },
   '_onkeyup': function(ev) {

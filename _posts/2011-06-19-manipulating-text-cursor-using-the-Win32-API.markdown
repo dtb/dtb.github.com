@@ -71,7 +71,7 @@ Inside your handler for the text change notification (see [full solution][fs-con
         }
     }
 
-They key logic here (and this is probably not really sophisticated enough, to be honest—consider a user trying to delete a trailing “a”) 
+The key logic here (and this is probably not really sophisticated enough, to be honest—consider a user trying to delete a trailing “a”) 
 is that we check if they initially had nothing selected (`firstChar == lastChar`), and if their cursor was at the end of the string 
 (`firstChar == len`.) In this case, we want to move the cursor forward by one character to account for the character we just added.
 

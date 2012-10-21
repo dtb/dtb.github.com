@@ -13,25 +13,73 @@ title: x
 	</head>
 	<body>
 		<header>
-			<hgroup class="inner">
+			<div class="inner">
 				<h1>
 					<a href="/">
-						dtb
+						d<span>avid </span>t<span>homas </span>b<span>ernal</span>
 					</a>
 				</h1>
-			</hgroup>
+			</div>
 		</header>
 		<div id="container">
-			<section id="about-me">
-				<p>
-					I am David Thomas Bernal, a New York City based web developer. I like music, programming and
-					minimalism.
-				</p>
-				<p>
-					I work at <a href="http://www.etsy.com">Etsy</a> where my goal is to make shopping on Etsy as easy, and
-					fun	as possible.
-				</p>
+			<section class="inner" id="about-me">
+				<ul>
+					<li>
+						<a href="#codes">codes</a>
+						<p id="codes" class="about-me-sub">
+							Mostly at <a href="http://www.etsy.com">Etsy</a>,
+							where I work with incredibly talented people to
+							make buying handmade and vintage goods easy,
+							inspiring, and fun.
+						</p>
+					</li>
+					<li>
+						<a href="#listens">listens</a>
+						<div id="listens" class="about-me-sub">
+							<p>
+								Music is about the best thing there is. I've felt this
+								way for as long as I can remember.
+							</p>
+							<ul id="listens-to">
+								<li>
+									<strong>Bloom (Jamie XX Rework)</strong> Radiohead
+								</li>
+								<li>
+									<strong>Bloom (Objekt Remix)</strong> Radiohead
+								</li>
+								<li>
+									<strong>TKOL (Altrice RMX)</strong> Radiohead
+								</li>
+								<li>
+									<strong>Give Up The Ghost (Brokenchord RMX)</strong> Radiohead
+								</li>
+								<li>
+									<strong>Little By Little (Shed RMX)</strong> Radiohead
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li>
+						<a href="#writes">writes</a>
+						<div class="about-me-sub" id="writes">
+							I write a bit about what I'm working on.
+							<ul>
+								{% for post in site.posts limit:6 %}
+									{% unless post.draft %}
+									<li>
+										<a href="{{ post.url }}">{{ post.title }}</a>
+										<p>
+											{{ post.summary }}
+										</p>
+									</li>
+									{% endunless %}
+								{% endfor %}
+							</ul>
+						</div>
+					</li>
+				</ul>
 			</section>
+			{% comment %}
 			<section id="articles">
 				<h2>Articles <a title="View more articles" href="/archive.html">↬</a></h2>
 				<ul>
@@ -42,7 +90,6 @@ title: x
 							<p>
 								{{ post.summary }}
 							</p>
-							<!-- <span class="date">{{ post.date | date: "%d %b %Y" }}</span> -->
 						</li>
 						{% endunless %}
 					{% endfor %}
@@ -82,6 +129,7 @@ title: x
 					<li><a href="http://github.com/dtb<">Github</a></li>
 				</ul>
 			</footer>
+			{% endcomment %}
 		</div>
 	</body>
 </html>

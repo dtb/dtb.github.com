@@ -7,11 +7,12 @@ li {
 }
 a {
 	color:$links_blue;
+	text-decoration:none;
 	&:visited {
-		color:darken($links_blue, 3);
+		color:$links_blue;
 	}
 	&:hover {
-		color:$links_red;
+		text-decoration:underline;
 	}
 }
 body {
@@ -22,20 +23,30 @@ body {
 }
 
 header {
-	@include full-width;
-	border-bottom:1px solid transparentize(darken($bg_orange, 60%), .75);
 	margin-bottom:1em;
+	padding-top:1px;
 	h1 {
-		margin-bottom:.25em;
 		font-family:capriola, sans-serif;
 		@include single-transition(text-shadow, 125ms, ease-in);
-		margin-top:.75em;
-		&:hover {
-			@include text-shadow(0px 0px 5px $glowy_purple);
-		}
+		//&:hover {
+			//@include text-shadow(0px 0px 5px $glowy_purple);
+		//}
 		a, a:visited {
 			text-decoration:none;
 			color:$header_purple;
+			span {
+				//max-width:0;
+				overflow:hidden;
+				display:inline-block;
+				-webkit-transition:max-width 150ms;
+				padding-right:.35em;
+				max-width:250px;
+			}
+		}
+		&:hover {
+			a span {
+				max-width:250px;
+			}
 		}
 	}
 

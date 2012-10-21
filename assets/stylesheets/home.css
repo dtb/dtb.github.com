@@ -1,14 +1,46 @@
 @import url(normalize.css);
 /* line 3, ../sass/home.scss */
-#articles h2 a {
-  text-decoration: none;
-  display: none;
+body {
+  text-align: center;
 }
 
-/* line 9, ../sass/home.scss */
-#articles li p {
-  color: #444;
-  font-size: .95em;
-  margin: 0 0 .6em;
-  line-height: 1.2;
+/* line 7, ../sass/home.scss */
+#about-me {
+  font-size: 2em;
 }
+
+/* line 11, ../sass/home.scss */
+.about-me-sub {
+  font-size: .55em;
+  margin: 1em 0 1.25em;
+  max-height: 0;
+  overflow: hidden;
+}
+
+/* line 18, ../sass/home.scss */
+.about-me-sub:target {
+  display: block;
+  max-height: 500px;
+  -webkit-transition: max-height 300ms;
+}
+
+/*
+
+I SEEN THIS ALREADY OLD SHIT
+
+
+#articles h2 a {
+	text-decoration:none;
+	display:none;
+}
+
+#articles li {
+	p {
+		color:#444;
+		font-size:.95em;
+		margin: 0 0 .6em;
+		line-height:1.2;
+	}
+}
+
+*/

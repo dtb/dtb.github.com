@@ -2,8 +2,7 @@ body {
 	margin:$body-margin;
 }
 
-.inner,
-#container {
+.inner {
 	@include container;
 
 	@include at-breakpoint($break-big) {

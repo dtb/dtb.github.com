@@ -1,0 +1,17 @@
+@import "base";
+
+#articles h2 a {
+	text-decoration:none;
+	display:none;
+}
+
+#articles li {
+	p {
+		color:#444;
+		font-size:.95em;
+		margin: 0 0 .6em;
+		line-height:1.2;
+	}
+}
+
+

@@ -1,0 +1,13 @@
+body {
+	margin:$body-margin;
+}
+
+.inner,
+#container {
+	@include container;
+
+	@include at-breakpoint($break-big) {
+		@include set-container-width;
+	}
+
+}

@@ -1,6 +1,18 @@
 ---
 layout: post
 title: Manipulating the caret (text cursor) using the Win32 API
+summary: Learn how to manipulate the text caret in an input field using Win32.
+styles: "
+.spacy {
+	border: 1px solid #666;
+	padding: 5px 5px;
+	background-color: rgba(255, 255, 255, .4);
+}
+.extra_emph {
+	font-style: normal;
+	border-bottom: 3px double black;
+}
+"
 ---
 
 # Manipulating the caret (text cursor) using the Win32 API
@@ -12,7 +24,7 @@ For example, if the user is typing a phone number, they
 might type “9595551234”, and as they type, their text would be formatted as such
 (system-inserted characters <em class="extra_emph">emphasized</em>):
 
-“<span class="spacy"><em class="extra_emph">(</em>959<em class="extra_emph">) </em>555<em class="extra_emph">-</em>1234</span>.” 
+&#x20;<span class="spacy"><em class="extra_emph">(</em>959<em class="extra_emph">) </em>555<em class="extra_emph">-</em>1234</span>.
 
 This kind of user interface,
 when done very carefully [^carefully], can make data entry faster and ensure better-formatted results.
@@ -37,39 +49,42 @@ code is as follows:
 
 Inside your handler for the text change notification (see [full solution][fs-context] for more context):
 
-    // first get the text the user has entered
-    TCHAR buff[64];
-    SendMessage(hwndEdit, WM_GETTEXT, 32, (LPARAM)buff); // (32 in case these are wide chars)
-    size_t len = _tcslen(buff);
-    
-    // if they've entered text, and the last character is an h
-    if(len > 0 && buff[len - 1] == 'h')
+{% highlight c %}
+// first get the text the user has entered
+TCHAR buff[64];
+SendMessage(hwndEdit, WM_GETTEXT, 32, (LPARAM)buff); // (32 in case these are wide chars)
+size_t len = _tcslen(buff);
+
+// if they've entered text, and the last character is an h
+if(len > 0 && buff[len - 1] == 'h')
+{
+    // also, if we have room in our buffer for the "a"
+    if ( len <= 62)
     {
-        // also, if we have room in our buffer for the "a"
-        if ( len <= 62)
+        // add the a
+        _tcsncat(buff, L"a", 1);
+        
+        // before manipulating the text, save their current selection
+        DWORD firstChar, lastChar;
+        SendMessage(hwndEdit, EM_GETSEL, (WPARAM) &firstChar, (LPARAM) &lastChar);
+        
+        // now set the text -- guard is a simple mutex to prevent recursing into this 
+        // change notification
+        gaurd = true;
+        SendMessage(hwndEdit, WM_SETTEXT, NULL, (LPARAM) buff);
+        gaurd = false;
+        
+        if(firstChar == lastChar && firstChar == len)
         {
-            // add the a
-            _tcsncat(buff, L"a", 1);
-            
-            // before manipulating the text, save their current selection
-            DWORD firstChar, lastChar;
-            SendMessage(hwndEdit, EM_GETSEL, (WPARAM) &firstChar, (LPARAM) &lastChar);
-            
-            // now set the text -- guard is a simple mutex to prevent recursing into this change notification
-            gaurd = true;
-            SendMessage(hwndEdit, WM_SETTEXT, NULL, (LPARAM) buff);
-            gaurd = false;
-            
-            if(firstChar == lastChar && firstChar == len)
-            {
-                firstChar++;
-                lastChar++;
-            }
-            
-            // restore their cursor position or selection
-            SendMessage(hwndEdit, EM_SETSEL, (WPARAM) firstChar, (LPARAM) lastChar);
+            firstChar++;
+            lastChar++;
         }
+        
+        // restore their cursor position or selection
+        SendMessage(hwndEdit, EM_SETSEL, (WPARAM) firstChar, (LPARAM) lastChar);
     }
+}
+{% endhighlight %}
 
 The key logic here (and this is probably not really sophisticated enough, to be honest—consider a user trying to delete a trailing “a”) 
 is that we check if they initially had nothing selected (`firstChar == lastChar`), and if their cursor was at the end of the string 

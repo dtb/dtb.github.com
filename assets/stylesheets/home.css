@@ -1,0 +1,14 @@
+@import url(normalize.css);
+/* line 3, ../sass/home.scss */
+#articles h2 a {
+  text-decoration: none;
+  display: none;
+}
+
+/* line 9, ../sass/home.scss */
+#articles li p {
+  color: #444;
+  font-size: .95em;
+  margin: 0 0 .6em;
+  line-height: 1.2;
+}

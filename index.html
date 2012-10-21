@@ -1,41 +1,87 @@
 ---
-layout: default
-title: david thomas bernal
+title: x
 ---
+<!doctype HTML>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+		<title>david thomas bernal--NYC based web developer</title>
+		<link rel="stylesheet" href="/assets/stylesheets/screen.css" />
+		<link rel="stylesheet" href="/assets/stylesheets/home.css" />
+		<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Capriola|Karla|Varela' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+		<header>
+			<hgroup class="inner">
+				<h1>
+					<a href="/">
+						dtb
+					</a>
+				</h1>
+			</hgroup>
+		</header>
+		<div id="container">
+			<section id="about-me">
+				<p>
+					I am David Thomas Bernal, a New York City based web developer. I like music, programming and
+					minimalism.
+				</p>
+				<p>
+					I work at <a href="http://www.etsy.com">Etsy</a> where my goal is to make shopping on Etsy as easy, and
+					fun	as possible.
+				</p>
+			</section>
+			<section id="articles">
+				<h2>Articles <a title="View more articles" href="/archive.html">↬</a></h2>
+				<ul>
+					{% for post in site.posts limit:6 %}
+						{% unless post.draft %}
+						<li>
+							<a href="{{ post.url }}">{{ post.title }}</a>
+							<p>
+								{{ post.summary }}
+							</p>
+							<!-- <span class="date">{{ post.date | date: "%d %b %Y" }}</span> -->
+						</li>
+						{% endunless %}
+					{% endfor %}
+				</ul>
+			</section>
+			<section class="clearfix" id="projects">
+				<h2>Projects</h2>
+				<ul>
+					<li class="clearfix">
+						<a href="http://unicodefor.us">
+							<a href="http://unicodefor.us">UnicodeForUs →</a>
+							<div>the open repository of fun unicode characters</div>
+						</a>
+					</li>
 
-	<section>
-		<h1>David Thomas Bernal</h1>
-		<p>
-			I am a web developer living in New York City. I like programming, music, and minimalism.
-		</p>
-		<h2>Articles</h2>
-		<p>
-			Every now and then, I write an article. Here are the most-recent five:
-		</p>
-		<ul id="posts">
-			{% for post in site.posts limit:6 %}
-                {% unless post.draft %}
-                <li>
-                    <span class="date">{{ post.date | date: "%d %b %Y" }}</span>
-                    <a href="{{ post.url }}">{{ post.title }}</a>
-                </li>
-                {% endunless %}
-			{% endfor %}
-		</ul>
-		<p id="allposts">
-			<a href="archive.html">all articles</a>
-		</p>
-		<h2>At work</h2>
-		<p>
-			I'm currently working at <a href="http://www.etsy.com">Etsy</a>,	trying to make it
-			awesome and fun and easy (all at the same time) to buy things on Etsy.
-		</p>
-		<h2 id="ontheside">On the side</h2>
-		<p>
-			I've been trying to come up with a way to draw <a href="/canvas/one.html">beautiful</a> <a href="/canvas/two.html">fractal trees</a> that <a href="/canvas/three.html">sway in a gentle breeze</a>. 
-			As it turns out, this is <a href="/canvas/three.1.html">actually</a> <a href="/canvas/three.2.html">pretty</a> <a href="/canvas/three.3.html">frustrating</a>.
-		</p>
-		<p>
-			When I'm not programming, I listen to music and play Starcraft II.
-		</p>
-	</section>
+					<li class="clearfix">
+						<a class="clearfix" href="http://airport.terminals.im">
+							<a href="http://airport.terminals.im">AirportTerminals.im →</a>
+							<div>the no-noise mobile-friendly site that helps you find your airport terminal</div>
+						</a>
+					</li>
+
+					<li class="clearfix">
+						<a href="/projects/trees.html">
+							<a href="/projects/trees.html">Trees →</a>
+							<div>lovely fractal trees that sway in a gentle breeze</div>
+						</a>
+					</li>
+				</ul>
+			</section>
+			<footer>
+				<p>This has been davidthomasbernal.com. I hope you've had a good time and learned a lot.</p>
+				<strong>Please feel free to get in touch!</strong>
+				<ul class="contact">
+					<li><a href="mailto:david@davidthomasbernal.com">david@davidthomasbernal.com</a>
+					<li><a href="http://twitter.com/notJim">@notJim</a></li>
+					<li><a href="http://github.com/dtb<">Github</a></li>
+				</ul>
+			</footer>
+		</div>
+	</body>
+</html>

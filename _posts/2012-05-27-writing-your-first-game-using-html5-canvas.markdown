@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Writing your first game using html5 and canvas
+summary: "Establish the basic framework for an html5 and canvas game that will help
+	you write maintainable code so you can keep iterating quickly on your game."
 styles: "
 article img {
     border:1px solid #CCC;

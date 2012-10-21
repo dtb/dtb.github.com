@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Debugging Firefox Extensions the Easy Way
+summary: Quick and dirty debugging for Firefox extensions
 ---
 
 # Debugging Firefox Extensions the Easy Way

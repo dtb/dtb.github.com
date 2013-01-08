@@ -16,120 +16,50 @@ title: x
 			<div class="inner">
 				<h1>
 					<a href="/">
-						d<span>avid </span>t<span>homas </span>b<span>ernal</span>
+						david thomas bernal
 					</a>
 				</h1>
 			</div>
 		</header>
 		<div id="container">
 			<section class="inner" id="about-me">
-				<ul>
+			<ul>
+				{% for post in site.posts limit:6 %}
+					{% unless post.draft %}
 					<li>
-						<a href="#codes">codes</a>
-						<p id="codes" class="about-me-sub">
-							Mostly at <a href="http://www.etsy.com">Etsy</a>,
-							where I work with incredibly talented people to
-							make buying handmade and vintage goods easy,
-							inspiring, and fun.
+						<a href="{{ post.url }}">{{ post.title }}</a>
+						<p>
+						{{ post.summary }}
 						</p>
 					</li>
-					<li>
-						<a href="#listens">listens</a>
-						<div id="listens" class="about-me-sub">
-							<p>
-								Music is about the best thing there is. I've felt this
-								way for as long as I can remember.
-							</p>
-							<ul id="listens-to">
-								<li>
-									<strong>Bloom (Jamie XX Rework)</strong> Radiohead
-								</li>
-								<li>
-									<strong>Bloom (Objekt Remix)</strong> Radiohead
-								</li>
-								<li>
-									<strong>TKOL (Altrice RMX)</strong> Radiohead
-								</li>
-								<li>
-									<strong>Give Up The Ghost (Brokenchord RMX)</strong> Radiohead
-								</li>
-								<li>
-									<strong>Little By Little (Shed RMX)</strong> Radiohead
-								</li>
-							</ul>
-						</div>
-					</li>
-					<li>
-						<a href="#writes">writes</a>
-						<div class="about-me-sub" id="writes">
-							I write a bit about what I'm working on.
-							<ul>
-								{% for post in site.posts limit:6 %}
-									{% unless post.draft %}
-									<li>
-										<a href="{{ post.url }}">{{ post.title }}</a>
-										<p>
-											{{ post.summary }}
-										</p>
-									</li>
-									{% endunless %}
-								{% endfor %}
-							</ul>
-						</div>
-					</li>
-				</ul>
-			</section>
-			{% comment %}
-			<section id="articles">
-				<h2>Articles <a title="View more articles" href="/archive.html">↬</a></h2>
-				<ul>
-					{% for post in site.posts limit:6 %}
-						{% unless post.draft %}
-						<li>
-							<a href="{{ post.url }}">{{ post.title }}</a>
-							<p>
-								{{ post.summary }}
-							</p>
-						</li>
-						{% endunless %}
+					{% endunless %}
 					{% endfor %}
-				</ul>
-			</section>
-			<section class="clearfix" id="projects">
-				<h2>Projects</h2>
-				<ul>
-					<li class="clearfix">
-						<a href="http://unicodefor.us">
-							<a href="http://unicodefor.us">UnicodeForUs →</a>
-							<div>the open repository of fun unicode characters</div>
-						</a>
-					</li>
+						<li class="clearfix">
+								<a href="http://unicodefor.us">UnicodeForUs →</a>
+								<p>the open repository of fun unicode characters</p>
+						</li>
 
-					<li class="clearfix">
-						<a class="clearfix" href="http://airport.terminals.im">
-							<a href="http://airport.terminals.im">AirportTerminals.im →</a>
-							<div>the no-noise mobile-friendly site that helps you find your airport terminal</div>
-						</a>
-					</li>
+						<li class="clearfix">
+								<a href="http://airport.terminals.im">AirportTerminals.im →</a>
+								<p>the no-noise mobile-friendly site that helps you find your airport terminal</p>
+							</a>
+						</li>
 
-					<li class="clearfix">
-						<a href="/projects/trees.html">
-							<a href="/projects/trees.html">Trees →</a>
-							<div>lovely fractal trees that sway in a gentle breeze</div>
-						</a>
-					</li>
+						<li class="clearfix">
+							<a href="/projects/trees.html">
+								<a href="/projects/trees.html">Trees →</a>
+								<p>lovely fractal trees that sway in a gentle breeze</p>
+							</a>
+						</li>
 				</ul>
 			</section>
 			<footer>
-				<p>This has been davidthomasbernal.com. I hope you've had a good time and learned a lot.</p>
-				<strong>Please feel free to get in touch!</strong>
 				<ul class="contact">
 					<li><a href="mailto:david@davidthomasbernal.com">david@davidthomasbernal.com</a>
 					<li><a href="http://twitter.com/notJim">@notJim</a></li>
 					<li><a href="http://github.com/dtb<">Github</a></li>
 				</ul>
 			</footer>
-			{% endcomment %}
 		</div>
 	</body>
 </html>

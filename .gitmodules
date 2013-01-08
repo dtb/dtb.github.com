@@ -1,6 +1,3 @@
 [submodule "media/pygments"]
 	path = media/pygments
 	url = git://github.com/Anomareh/pygments-styles-dump.git
-[submodule "styles/sass/vendor/normalize"]
-	path = styles/sass/vendor/normalize
-	url = git://github.com/ptb/normalize.sass.git

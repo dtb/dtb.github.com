@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<title>{{ page.title }}--david thomas bernal--NYC based web developer</title>
 		<link href='http://fonts.googleapis.com/css?family=Capriola' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" href="/assets/stylesheets/screen.css" />
+		<link rel="stylesheet" href="/styles/stylesheets/screen.css" />
 		<link rel="stylesheet" href="/media/pygments/autumn.css" />
 		<style>
 			{{ page.styles }}
@@ -13,21 +13,19 @@
 	</head>
 	<body>
 		<div id="container">
-			<header>
+			<header class="inner">
 				<hgroup>
-					<h1>
+					<div id="mark">
 						<a href="/">
 							dtb
 						</a>
-					</h1>
+					</div>
 				</hgroup>
 			</header>
-			<article>
+			<article class="inner">
 				{{ content }}
 			</article>
-			<footer>
-				<p>This has been davidthomasbernal.com. I hope you've had a good time and learned a lot.</p>
-				<strong>Please feel free to get in touch!</strong>
+			<footer class="inner">
 				<ul class="contact">
 					<li><a href="mailto:david@davidthomasbernal.com">david@davidthomasbernal.com</a>
 					<li><a href="http://twitter.com/notJim">@notJim</a></li>

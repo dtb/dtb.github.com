@@ -6,9 +6,9 @@ title: x
 	<head>
 		<meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-		<title>david thomas bernal--NYC based web developer</title>
-		<link rel="stylesheet" href="/assets/stylesheets/screen.css" />
-		<link rel="stylesheet" href="/assets/stylesheets/home.css" />
+		<title>David Thomas Bernal—NYC based web developer</title>
+		<link rel="stylesheet" href="/styles/stylesheets/screen.css" />
+		<link rel="stylesheet" href="/styles/stylesheets/home.css" />
 		<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Capriola|Karla|Varela' rel='stylesheet' type='text/css'>
 	</head>
 	<body>
@@ -27,7 +27,9 @@ title: x
 				{% for post in site.posts limit:6 %}
 					{% unless post.draft %}
 					<li>
-						<a href="{{ post.url }}">{{ post.title }}</a>
+						<h2>
+							<a href="{{ post.url }}">{{ post.title }}</a>
+						</h2>
 						<p>
 						{{ post.summary }}
 						</p>
@@ -35,31 +37,29 @@ title: x
 					{% endunless %}
 					{% endfor %}
 						<li class="clearfix">
-								<a href="http://unicodefor.us">UnicodeForUs →</a>
-								<p>the open repository of fun unicode characters</p>
+							<h2><a href="http://unicodefor.us">UnicodeForUs →</a></h2>
+							<p>the open repository of fun unicode characters</p>
 						</li>
 
 						<li class="clearfix">
-								<a href="http://airport.terminals.im">AirportTerminals.im →</a>
-								<p>the no-noise mobile-friendly site that helps you find your airport terminal</p>
+							<h2><a href="http://airport.terminals.im">AirportTerminals.im →</a></h2>
+							<p>the no-noise mobile-friendly site that helps you find your airport terminal</p>
 							</a>
 						</li>
 
 						<li class="clearfix">
-							<a href="/projects/trees.html">
-								<a href="/projects/trees.html">Trees →</a>
-								<p>lovely fractal trees that sway in a gentle breeze</p>
-							</a>
+							<h2><a href="/projects/trees.html">Trees →</a></h2>
+							<p>lovely fractal trees that sway in a gentle breeze</p>
 						</li>
 				</ul>
-			</section>
-			<footer>
-				<ul class="contact">
-					<li><a href="mailto:david@davidthomasbernal.com">david@davidthomasbernal.com</a>
-					<li><a href="http://twitter.com/notJim">@notJim</a></li>
-					<li><a href="http://github.com/dtb<">Github</a></li>
-				</ul>
-			</footer>
-		</div>
-	</body>
-</html>
+				</section>
+				<footer class="inner">
+					<ul class="contact">
+						<li><a href="mailto:david@davidthomasbernal.com">david@davidthomasbernal.com</a>
+						<li><a href="http://twitter.com/notJim">@notJim</a></li>
+						<li><a href="http://github.com/dtb<">Github</a></li>
+					</ul>
+				</footer>
+			</div>
+		</body>
+	</html>

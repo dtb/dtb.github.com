@@ -2,11 +2,42 @@
 // Imports
 
 @import "base";
+@import "vendor/normalize/normalize";
 
 /* -------------------------------------------------------------------------*/
 /* Layout */
 
-.container {
+.inner {
   @include container;
-  @include susy-grid-background;
 }
+
+body { 
+	font-size:100%;
+	line-height:1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+}
+
+header {
+	h1, #mark {
+		margin:1em 0;
+
+		a {
+			text-decoration:none;
+			&:visited {
+				color:$link-color;
+			}
+		}
+	}
+}
+
+#mark, h1 {
+	font-size:2.25em; 
+}
+h2 { font-size:1.5em; }
+h3 { font-size:1.125em; }
+h4 { font-size:1em; }
+p  { font-size:.875em; }
+

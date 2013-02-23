@@ -6,7 +6,7 @@ ul {
 }
 
 h2 {
-	font-size:1em;
+	margin:2em 0 .6em 0;
 	a {
 		text-decoration:none;
 		&:visited {
@@ -14,3 +14,14 @@ h2 {
 		}
 	}
 }
+
+p {
+	line-height:1.5;
+	margin:0;
+	font-style:italic;
+}
+
+ul li {
+	margin:2em 0;
+}
+

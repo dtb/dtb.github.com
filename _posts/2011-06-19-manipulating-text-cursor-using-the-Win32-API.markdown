@@ -49,7 +49,7 @@ code is as follows:
 
 Inside your handler for the text change notification (see [full solution][fs-context] for more context):
 
-{% highlight c %}
+{% highlight c++ %}
 // first get the text the user has entered
 TCHAR buff[64];
 SendMessage(hwndEdit, WM_GETTEXT, 32, (LPARAM)buff); // (32 in case these are wide chars)

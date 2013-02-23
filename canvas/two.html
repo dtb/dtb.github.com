@@ -14,17 +14,36 @@
 				margin:0;
 				padding:0;
 			}
+			ul {
+				list-style:none;
+				padding:0 6px;
+				margin:0;
+				font-family:courier;
+				font-size:12px;
+			}
+			li {
+				float:left;
+				margin-right:2em;
+			}
 		</style>
 	</head>
 	<body>
+			<ul>
+				<li><a href="one.html">A forest of trees</a>
+				<li><a href="two.html">Another forest of trees</a>
+				<li><a href="three.1.html">Swaying trees (attempt one)</a>
+				<li><a href="three.2.html">Swaying trees (attempt two)</a>
+				<li><a href="three.3.html">Swaying trees (attempt three)</a>
+				<li><a href="three.html">Swaying trees (best attempt)</a>
+			</ul>
 			<canvas id="whisky" width="1000" height="500">
 			
 			</canvas>
 			
 			<script>
 				var canvas = document.getElementById('whisky');
-				canvas.height = window.innerHeight-3;
-				canvas.width = window.innerWidth-3;
+				canvas.height = window.innerHeight-20;
+				canvas.width = window.innerWidth-20;
 				
 				var branches = 12;
 				

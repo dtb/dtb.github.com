@@ -1,8 +1,7 @@
 ---
 layout: post
 title: Writing your first game using html5 and canvas
-summary: "Establish the basic framework for an html5 and canvas game that will help
-	you write maintainable code so you can keep iterating quickly on your game."
+summary: "A lightweight structure for your html5 game that keeps you moving fast"
 styles: "
 article img {
     border:1px solid #CCC;
@@ -66,7 +65,9 @@ For my first game, I wanted to write something simple, but still with the key co
 a game, like animation, collision detection, and player input. I picked a
 game I remembered played on my TI-83 calculator in high school:
 
-![game concept.](/media/falling.mockup.jpeg)
+<div>
+	<img src="/media/falling.mockup.jpeg" alt="game concept" />
+</div>
 
 In the game, you control the blue circle. As the platforms move up, you have to steer yourself
 into the gaps to avoid getting crushed to a poorly-rendered red pulp by the spikes.

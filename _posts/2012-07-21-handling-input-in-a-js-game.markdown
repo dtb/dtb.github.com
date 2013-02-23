@@ -18,9 +18,7 @@ the animation loop, and a `Drawable` object that provides a simple interface for
 object to draw and interact with objects that exist.
 
 In this post, I'm going to continue with the same game concept, this time adding input handling,
-which will allow the player to move their little guy around.
-
-If you think about it, there are really two parts to being able to handle input. The first
+which will allow the player to move their little guy around. If you think about it, there are really two parts to being able to handle input. The first
 part is keeping track of what the actual input is—in this case, what keyboard keys are pressed— 
 and the second is reacting to that input. For this game, I created an `InputManager` object
 to track the input, and then the `Player` or `Drawable` objects can react accordingly.

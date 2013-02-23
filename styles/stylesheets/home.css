@@ -6,7 +6,7 @@ ul {
 
 /* line 8, ../sass/home.scss */
 h2 {
-  font-size: 1em;
+  margin: 2em 0 0.6em 0;
 }
 /* line 10, ../sass/home.scss */
 h2 a {
@@ -15,4 +15,16 @@ h2 a {
 /* line 12, ../sass/home.scss */
 h2 a:visited {
   color: blue;
+}
+
+/* line 18, ../sass/home.scss */
+p {
+  line-height: 1.5;
+  margin: 0;
+  font-style: italic;
+}
+
+/* line 24, ../sass/home.scss */
+ul li {
+  margin: 2em 0;
 }

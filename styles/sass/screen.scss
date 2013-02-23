@@ -1,28 +1,87 @@
 // ---------------------------------------------------------------------------
 // Imports
 
-@import "base";
 @import "vendor/normalize/normalize";
+@import "base";
 
 /* -------------------------------------------------------------------------*/
 /* Layout */
 
 .inner {
   @include container;
+  margin:0 0 0 0;
 }
 
-body { 
+@include at-breakpoint(60em) {
+	.inner {
+		margin-left:3 * $column-width;
+	}
+
+	footer ul li {
+		float:left;
+	}
+}
+
+body {
 	font-size:100%;
+	font-family:georgia, serif;
 	line-height:1.5;
+	padding-bottom:$column-width;
+}
+
+h1 { font-size:2.25em; line-height:1.5; margin:2em 0; }
+h2 { font-size:1.5em; line-height:1; margin:2em 0 1.8em 0; }
+h3 { font-size:1.3125em; line-height:1.14; }
+h4 { font-size:1.125em; line-height:1.5;}
+p  { font-size:1em; }
+
+pre code { font-size:.875em; }
+
+pre	{
+	border: 1px solid #eaeaea;
+	background: #efefef;
+	$padding: .5em;
+	padding: 0em $padding;
+	margin: 0 (-1 * $padding);
+}
+
+p {
+	margin: 1.5em 0 0 0;
+}
+
+p + p {
+	margin:0;
+	text-indent:1.5em;
+}
+
+p + div {
+	margin-top:1.5em;
 }
 
 h1, h2, h3, h4, h5, h6 {
 	font-weight: normal;
 }
 
+ul {
+	padding-left:0;
+	margin:1.5em 0;
+	li {
+		margin: 0 0 .6em;
+	}
+}
+
+.pubdate {
+	font-style: italic;
+	font-size: .875em;
+	display: block;
+	text-align: right;
+	color: #a9a9a9;
+	line-height:1.143;
+	margin-right:2em;
+}
+
 header {
 	h1, #mark {
-		margin:1em 0;
 
 		a {
 			text-decoration:none;
@@ -33,11 +92,27 @@ header {
 	}
 }
 
-#mark, h1 {
-	font-size:2.25em; 
+#mark {
+	margin:1.6em 0 0;
+	font-size:1.5em;
 }
-h2 { font-size:1.5em; }
-h3 { font-size:1.125em; }
-h4 { font-size:1em; }
-p  { font-size:.875em; }
 
+// fix an issue where the autumn pygments scheme thinks c is all comments
+.highlight code.c {
+	color:inherit;
+	font-style:inherit;
+}
+
+footer.inner {
+	margin-top:$column-width;
+}
+
+	footer p {
+		font-style:normal;
+
+	}
+
+		footer ul li {
+			margin:0 1em 0 0;
+			list-style-type:none;
+		}

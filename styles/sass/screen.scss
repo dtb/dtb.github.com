@@ -9,12 +9,10 @@
 
 .inner {
   @include container;
-  margin:0 0 0 0;
 }
 
 @include at-breakpoint(60em) {
 	.inner {
-		margin-left:3 * $column-width;
 	}
 
 	footer ul li {

@@ -18,7 +18,7 @@ h2 a:visited {
 }
 
 /* line 18, ../sass/home.scss */
-p {
+li.content-post p {
   line-height: 1.5;
   margin: 0;
   font-style: italic;

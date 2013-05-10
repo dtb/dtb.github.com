@@ -221,48 +221,50 @@ table {
 /* line 23, ../sass/screen.scss */
 body {
   font-size: 100%;
-  font-family: georgia, serif;
+  font-family: merriweather, georgia, serif;
   line-height: 1.5;
   padding-bottom: 4em;
+  background-color: #f2eeee;
+  color: #474747;
 }
 
-/* line 30, ../sass/screen.scss */
+/* line 32, ../sass/screen.scss */
 h1 {
-  font-size: 2.25em;
+  font-size: 2.5em;
   line-height: 1.5;
   margin: 2em 0;
 }
 
-/* line 31, ../sass/screen.scss */
+/* line 33, ../sass/screen.scss */
 h2 {
   font-size: 1.5em;
   line-height: 1;
   margin: 2em 0 1.8em 0;
 }
 
-/* line 32, ../sass/screen.scss */
+/* line 34, ../sass/screen.scss */
 h3 {
   font-size: 1.3125em;
   line-height: 1.14;
 }
 
-/* line 33, ../sass/screen.scss */
+/* line 35, ../sass/screen.scss */
 h4 {
   font-size: 1.125em;
   line-height: 1.5;
 }
 
-/* line 34, ../sass/screen.scss */
+/* line 36, ../sass/screen.scss */
 p {
   font-size: 1em;
 }
 
-/* line 36, ../sass/screen.scss */
+/* line 38, ../sass/screen.scss */
 pre code {
   font-size: .875em;
 }
 
-/* line 38, ../sass/screen.scss */
+/* line 40, ../sass/screen.scss */
 pre {
   border: 1px solid #eaeaea;
   background: #efefef;
@@ -270,38 +272,49 @@ pre {
   margin: 0 -0.5em;
 }
 
-/* line 46, ../sass/screen.scss */
+/* line 48, ../sass/screen.scss */
 p {
   margin: 1.5em 0 0 0;
 }
 
-/* line 50, ../sass/screen.scss */
+/* line 52, ../sass/screen.scss */
 p + p {
-  margin: 0;
-  text-indent: 1.5em;
+  /*margin:0;*/
+  /*text-indent:1.5em;*/
 }
 
-/* line 55, ../sass/screen.scss */
+/* line 57, ../sass/screen.scss */
 p + div {
   margin-top: 1.5em;
 }
 
-/* line 59, ../sass/screen.scss */
+/* line 61, ../sass/screen.scss */
 h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
+  font-family: varela round, sans-serif;
+  color: #F54E4E;
+}
+/* line 65, ../sass/screen.scss */
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  color: inherit;
+}
+/* line 67, ../sass/screen.scss */
+h1 a:hover, h1 a:visited:hover, h2 a:hover, h2 a:visited:hover, h3 a:hover, h3 a:visited:hover, h4 a:hover, h4 a:visited:hover, h5 a:hover, h5 a:visited:hover, h6 a:hover, h6 a:visited:hover {
+  text-decoration: underline;
+  color: #fe3e3e;
 }
 
-/* line 63, ../sass/screen.scss */
+/* line 74, ../sass/screen.scss */
 ul {
   padding-left: 0;
   margin: 1.5em 0;
 }
-/* line 66, ../sass/screen.scss */
+/* line 77, ../sass/screen.scss */
 ul li {
   margin: 0 0 0.6em;
 }
 
-/* line 71, ../sass/screen.scss */
+/* line 82, ../sass/screen.scss */
 .pubdate {
   font-style: italic;
   font-size: .875em;
@@ -312,38 +325,48 @@ ul li {
   margin-right: 2em;
 }
 
-/* line 84, ../sass/screen.scss */
+/* line 93, ../sass/screen.scss */
+header h1, header #mark {
+  font-family: varela round, sans-serif;
+  color: #b6b1b1;
+}
+/* line 97, ../sass/screen.scss */
 header h1 a, header #mark a {
   text-decoration: none;
+  color: #b6b1b1;
 }
-/* line 86, ../sass/screen.scss */
-header h1 a:visited, header #mark a:visited {
-  color: blue;
+/* line 100, ../sass/screen.scss */
+header h1 a:visited, header h1 a:visited:hover, header #mark a:visited, header #mark a:visited:hover {
+  color: #b6b1b1;
+}
+/* line 103, ../sass/screen.scss */
+header h1 a:visited:hover, header #mark a:visited:hover {
+  text-decoration: underline;
 }
 
-/* line 93, ../sass/screen.scss */
+/* line 110, ../sass/screen.scss */
 #mark {
   margin: 1.6em 0 0;
-  font-size: 1.5em;
+  font-size: 2em;
 }
 
-/* line 99, ../sass/screen.scss */
+/* line 116, ../sass/screen.scss */
 .highlight code.c {
   color: inherit;
   font-style: inherit;
 }
 
-/* line 104, ../sass/screen.scss */
+/* line 121, ../sass/screen.scss */
 footer.inner {
   margin-top: 4em;
 }
 
-/* line 108, ../sass/screen.scss */
+/* line 125, ../sass/screen.scss */
 footer p {
   font-style: normal;
 }
 
-/* line 113, ../sass/screen.scss */
+/* line 130, ../sass/screen.scss */
 footer ul li {
   margin: 0 1em 0 0;
   list-style-type: none;

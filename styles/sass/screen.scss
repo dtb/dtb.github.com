@@ -22,12 +22,14 @@
 
 body {
 	font-size:100%;
-	font-family:georgia, serif;
+	font-family:merriweather, georgia, serif;
 	line-height:1.5;
 	padding-bottom:$column-width;
+	background-color:#f2eeee;
+	color: #474747;
 }
 
-h1 { font-size:2.25em; line-height:1.5; margin:2em 0; }
+h1 { font-size:2.5em; line-height:1.5; margin:2em 0; }
 h2 { font-size:1.5em; line-height:1; margin:2em 0 1.8em 0; }
 h3 { font-size:1.3125em; line-height:1.14; }
 h4 { font-size:1.125em; line-height:1.5;}
@@ -48,8 +50,8 @@ p {
 }
 
 p + p {
-	margin:0;
-	text-indent:1.5em;
+	/*margin:0;*/
+	/*text-indent:1.5em;*/
 }
 
 p + div {
@@ -58,6 +60,15 @@ p + div {
 
 h1, h2, h3, h4, h5, h6 {
 	font-weight: normal;
+	font-family:varela round, sans-serif;
+	color:#F54E4E;
+	a {
+		color:inherit;
+		&:hover, &:visited:hover {
+			text-decoration:underline;
+			color:hsl(0, 99%, 62%);
+		}
+	}
 }
 
 ul {
@@ -80,11 +91,17 @@ ul {
 
 header {
 	h1, #mark {
+		font-family:varela round, sans-serif;
+		color:#b6b1b1;
 
 		a {
 			text-decoration:none;
-			&:visited {
-				color:$link-color;
+			color:#b6b1b1;
+			&:visited, &:visited:hover {
+				color:#b6b1b1;
+			}
+			&:visited:hover {
+				text-decoration:underline;
 			}
 		}
 	}
@@ -92,7 +109,7 @@ header {
 
 #mark {
 	margin:1.6em 0 0;
-	font-size:1.5em;
+	font-size:2em;
 }
 
 // fix an issue where the autumn pygments scheme thinks c is all comments

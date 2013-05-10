@@ -10,7 +10,7 @@ h2 {
 	a {
 		text-decoration:none;
 		&:visited {
-			color:$link-color;
+			color:inherit;
 		}
 	}
 }
@@ -18,10 +18,15 @@ h2 {
 li.content-post p {
 	line-height:1.5;
 	margin:0;
-	font-style:italic;
 }
 
 ul li {
 	margin:2em 0;
+	&:first-child h2 {
+		margin-top:0;
+	}
 }
 
+h1 {
+	margin:1.5em 0 1em 0;
+}

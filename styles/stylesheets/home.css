@@ -14,17 +14,25 @@ h2 a {
 }
 /* line 12, ../sass/home.scss */
 h2 a:visited {
-  color: blue;
+  color: inherit;
 }
 
 /* line 18, ../sass/home.scss */
 li.content-post p {
   line-height: 1.5;
   margin: 0;
-  font-style: italic;
 }
 
-/* line 24, ../sass/home.scss */
+/* line 23, ../sass/home.scss */
 ul li {
   margin: 2em 0;
+}
+/* line 25, ../sass/home.scss */
+ul li:first-child h2 {
+  margin-top: 0;
+}
+
+/* line 30, ../sass/home.scss */
+h1 {
+  margin: 1.5em 0 1em 0;
 }

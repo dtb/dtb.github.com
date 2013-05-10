@@ -13,7 +13,7 @@ side project of 2 years. This isn't about that developer, but the disappointing 
 to his post got me thinking of a
 disturbing kind of anti-intellectualism I see online: the idea that if something isn't
 already digested, summarized and posted for free to read online, it's not worth
-you're time to read it, or the related idea that long-form content like books is obsolete.
+your time to read it, or the related idea that long-form content like books is obsolete.
 
 In their responses, HN commenters suggested that the founder get a co-founder, who would
 help him stick out the startup with greater tenacity, or argued that he should "focus

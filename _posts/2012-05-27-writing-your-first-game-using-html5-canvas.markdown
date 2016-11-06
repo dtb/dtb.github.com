@@ -217,7 +217,7 @@ is in action:
     </canvas>
     <button id="stop">◼ Stop</button>
 </div>
-<script src="http://documentcloud.github.com/underscore/underscore-min.js"> </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"> </script>
 <script src="/posts/game/week1/week1-util.js"> </script>
 <script src="/posts/game/week1/week1.js"> </script>
 <script>

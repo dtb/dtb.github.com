@@ -2,6 +2,7 @@
 layout: post
 title: Compiling PHP extensions on Snow Leopard with XAMPP
 summary: Getting weird compiler errors using php on OS X with XAMPP? Read on.
+permalink: /blog/:year/:month/:day/:title
 ---
 
 # Compiling PHP extensions on Snow Leopard with XAMPP

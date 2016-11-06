@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Handling input in a javascript game
+permalink: /blog/:year/:month/:day/:title
 summary: "Write a simple javascript class that handles keyboard input
 for a javascript game."
 styles: "

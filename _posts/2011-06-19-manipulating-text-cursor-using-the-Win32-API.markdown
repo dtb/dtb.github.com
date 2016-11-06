@@ -2,6 +2,7 @@
 layout: post
 title: Manipulating the caret (text cursor) using the Win32 API
 summary: Learn how to manipulate the text caret in an input field using Win32.
+permalink: /blog/:year/:month/:day/:title
 styles: "
 .spacy {
 	border: 1px solid #666;

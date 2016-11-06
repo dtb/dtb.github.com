@@ -1,6 +1,7 @@
 ---
 layout: link
 title: Why I prefer Android
+permalink: /blog/:year/:month/:day/:title
 link: http://www.bkl.mn/blog/2013/1/28/android-adultery-navigation
 ---
 

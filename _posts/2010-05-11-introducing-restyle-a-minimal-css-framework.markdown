@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Introducing ReStyle: a Minimal CSS Framework"
+permalink: /blog/:year/:month/:day/:title
 ---
 
 

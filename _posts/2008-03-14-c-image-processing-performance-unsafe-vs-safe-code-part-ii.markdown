@@ -1,6 +1,7 @@
 ---
 layout: post
 title: C# Image Processing Performance - Unsafe vs. Safe code, Part II
+permalink: /blog/:year/:month/:day/:title
 ---
 
 #C# Image Processing Performance - Unsafe vs. Safe code, Part II

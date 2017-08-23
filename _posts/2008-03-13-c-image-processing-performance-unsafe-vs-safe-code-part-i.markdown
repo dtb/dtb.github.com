@@ -114,4 +114,4 @@ public unsafe Image ThresholdUA(float thresh)
 
 That basically covers the code and approach. In Part II (tomorrow, I promise!!), I'll post a full .sln and results of the comparison.
 
-Go read [Part II](/blog/2008/03/14/c-image-processing-performance-unsafe-vs-safe-code-part-ii/) for another approach, and the performance data!
+Go read [Part II](/blog/2008/03/14/c-image-processing-performance-unsafe-vs-safe-code-part-ii) for another approach, and the performance data!

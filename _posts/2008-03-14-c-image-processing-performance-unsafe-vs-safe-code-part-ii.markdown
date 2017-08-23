@@ -4,7 +4,7 @@ title: C# Image Processing Performance - Unsafe vs. Safe code, Part II
 permalink: /blog/:year/:month/:day/:title
 ---
 
-#C# Image Processing Performance - Unsafe vs. Safe code, Part II
+# C# Image Processing Performance - Unsafe vs. Safe code, Part II
 
 <span class="pubdate">published mar 14 2008</span>
 

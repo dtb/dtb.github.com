@@ -5,7 +5,7 @@ permalink: /blog/:year/:month/:day/:title
 ---
 
 
-#Introducing ReStyle: a Minimal CSS Framework
+# Introducing ReStyle: a Minimal CSS Framework
 
 <span class="pubdate">published may 11 2010</span>
 

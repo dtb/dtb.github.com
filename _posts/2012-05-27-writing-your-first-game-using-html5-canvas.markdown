@@ -79,7 +79,7 @@ The structure of a game in pseudo-code is as follows. In reality, we want to spl
 game up into some nice objects, so that it's clearer who plays what role, but this is the 
 basic skeleton.
 
-{% highlight javascript %}
+```javascript
 function game() {
     initialize();
 
@@ -99,7 +99,7 @@ function game() {
         draw();
     }, 1000/60);
 }
-{% endhighlight %}
+```
 
 ## Getting started
 
@@ -109,7 +109,7 @@ more detail, check out the [annotated source](/posts/game/week1/docs/week1.html)
 Much of the skeleton we saw before is reflected in the `Game` object. The Game object
 is the boss that handles coordinating the objects and running the animation loop. 
 
-{% highlight javascript %}
+```javascript
 // _.inherits sets up the prototype chain, so that the first argument 
 // is the prototype for the object in the second argument.
 var Game = _.inherits(function() { }, {
@@ -123,14 +123,14 @@ var Game = _.inherits(function() { }, {
         // loop over and draw each of our drawable objects
     }
 });
-{% endhighlight %}
+```
 
 Like any good leader, the Game object delegates the detail work to various specialists
 that know exactly how to do their jobs. The `Drawable` object specializes in—surprise!—drawing.
 The `Game` can draw all the objects in our world without caring about the specific way that happens.
 Drawable also forms the prototype for more-specialized drawing objects.
 
-{% highlight javascript %}
+```javascript
 var Drawable = _.inherits(function() { }, {
     'state': { x: 0, y: 0, vX: 0, vY: 0 },
     'constructor': function(initialState) {
@@ -148,12 +148,12 @@ var Drawable = _.inherits(function() { }, {
         // draw the actual object
     }
 });
-{% endhighlight %}
+```
 
 An example of a specialized `Drawable` is the `Background` object, which handles drawing
 the scrolling background for the game.
 
-{% highlight javascript %}
+```javascript
 // Background's prototype is the Drawable class
 var Background = _.inherits(Drawable, {
     'image': null,
@@ -201,7 +201,7 @@ var Background = _.inherits(Drawable, {
         );
     }
 });
-{% endhighlight %}
+```
 
 At this point, we have a nice structure for a game, and an animating background to boot.
 If you'd like, you can read the full, [annotated source for the game](/posts/game/week1/docs/week1.html), and here it 

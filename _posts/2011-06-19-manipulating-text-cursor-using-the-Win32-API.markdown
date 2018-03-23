@@ -50,7 +50,7 @@ code is as follows:
 
 Inside your handler for the text change notification (see [full solution][fs-context] for more context):
 
-{% highlight c++ %}
+```c++
 // first get the text the user has entered
 TCHAR buff[64];
 SendMessage(hwndEdit, WM_GETTEXT, 32, (LPARAM)buff); // (32 in case these are wide chars)
@@ -85,7 +85,7 @@ if(len > 0 && buff[len - 1] == 'h')
         SendMessage(hwndEdit, EM_SETSEL, (WPARAM) firstChar, (LPARAM) lastChar);
     }
 }
-{% endhighlight %}
+```
 
 The key logic here (and this is probably not really sophisticated enough, to be honest—consider a user trying to delete a trailing “a”) 
 is that we check if they initially had nothing selected (`firstChar == lastChar`), and if their cursor was at the end of the string 

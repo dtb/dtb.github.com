@@ -10,7 +10,7 @@ permalink: /blog/:year/:month/:day/:title
 
 In <a href="http://davidthomasbernal.com/blog/2008/03/13/c-image-processing-performance-unsafe-vs-safe-code-part-i">Part I of this article</a>, I outlined a method of performing pixel-level operations on an image that required neither unsafe code, nor the use of the <code>GetPixel</code> and <code>SetPixel</code> methods, which are notoriously slow. The one thing I neglected to include was an actual comparison of the <code>IntPtr</code> and pointer methods with the <code>GetPixel\SetPixel</code> methods. As such, I present such a method below. It looks tantalizingly simple, but we'll soon see that it is basically worthless.
 
-{% highlight csharp %}
+```csharp
 public Image ThresholdGS(float thresh)
 {
 	Bitmap b = new Bitmap(_image);
@@ -36,7 +36,7 @@ public Image ThresholdGS(float thresh)
 
 	return b;
 }
-{% endhighlight %}
+```
 
 <h2>Results</h2>
 As outlined in the previous post, I created a form that would allow me to run each threshold method repeatedly to find an average time per threshold operation. The results are given in the table below. For these tests, an arbitrary threshold of 125 was chosen. The image used 24 bits-per-color and had a size of 479 x 700 pixels.

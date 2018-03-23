@@ -21,7 +21,7 @@ To test the performance of this method and the usual unsafe method, I wrote two 
 
 The first method, listed below, uses the IntPtr approach.
 
-{% highlight csharp %}
+```csharp
 /*No unsafe keyword!*/
 public Image ThresholdMA(float thresh)
 {
@@ -65,11 +65,11 @@ public Image ThresholdMA(float thresh)
 
 	return b;
 }
-{% endhighlight %}
+```
 
 The second method uses pointers.
 
-{% highlight csharp %}
+```csharp
 /*Note unsafe keyword*/
 public unsafe Image ThresholdUA(float thresh)
 {
@@ -109,7 +109,7 @@ public unsafe Image ThresholdUA(float thresh)
 
 	return b;
 }
-{% endhighlight %}
+```
 
 
 That basically covers the code and approach. In Part II (tomorrow, I promise!!), I'll post a full .sln and results of the comparison.

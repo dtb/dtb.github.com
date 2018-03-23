@@ -28,7 +28,7 @@ Handling input is actually really easy. All we need to do is add a listener on t
 that stores the key being pressed, and then another listener on `keyup` that removes that 
 key from the list of active keys. The `InputManager` is below:
 
-{% highlight javascript %}
+```javascript
 var InputManager = inherits(function() { }, {
   // keycodes from jQuery UI: 
   // https://github.com/jquery/jquery-ui/blob/master/ui/jquery.ui.core.js
@@ -77,7 +77,7 @@ var InputManager = inherits(function() { }, {
     return !!this._keysDown[key];
   }
 });
-{% endhighlight %}
+```
 
 The `Game` object creates an `InputManager` object when it starts, and then holds on to
 it. The `Drawable` objects all receive the `Game` object when their `draw` function is called,
@@ -86,7 +86,7 @@ so if they need to handle input, they can just use the `InputManager`.
 Here is an example of a player `Drawable`, which checks for the left or right arrow keys,
 and then moves the player left or right accordingly.
 
-{% highlight javascript %}
+```javascript
 var Player = inherits(Drawable, {
   'doDraw': function(centroid, dT, game) {
     if(game.inputManager.keyDown(game.inputManager.Keys.LEFT)) {
@@ -106,7 +106,7 @@ var Player = inherits(Drawable, {
     this.constructor.__super__.doDraw.call(this, centroid, dT, game);
   }
 });
-{% endhighlight %}
+```
 
 
 Now we have a nice object we can use to make our game interactive, and have properly separated

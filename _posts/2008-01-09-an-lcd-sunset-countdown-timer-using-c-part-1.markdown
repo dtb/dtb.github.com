@@ -14,7 +14,7 @@ C# is my language of choice for desktop applications, so I immediately set out t
 
 Knowing that this would do exactly what I wanted, I moved on to calculating the time of sunset. Fortunately, I'd recently discovered one of those obscure functions that PHP is known for, <a href="http://www.php.net/date_sunset">date_sunset</a>, and more importantly, djwice's <a href="http://www.php.net/manual/en/function.date-sunset.php#47838">comment</a>, containing links to information on the algorithm used by this function. I implemented the following sunset function using the algorithm outlined on <a href="http://williams.best.vwh.net/sunrise_sunset_algorithm.htm">this page</a>.
 
-{% highlight c# %}
+```c#
 public DateTime Sunset(DateTime date)
 {
 	int dayOfYear = date.DayOfYear;
@@ -56,11 +56,11 @@ public DateTime Sunset(DateTime date)
 
 	return sunset;
 }
-{% endhighlight %}
+```
 
 Since geography is done using degrees, but math is done in radians, I decided to write my own trig functions that handled the conversion for me. I'm sure you all know how to do that ( :p ), but in case you don't, here are cosine and arccosine, from which you should be able to extrapolate to figure out the rest.
 
-{% highlight c# %}
+```c#
 private double Cos(double degrees)
 {
 	return Math.Cos(Math.PI / 180 * degrees);
@@ -70,6 +70,6 @@ private double Atan(double x)
 {
 	return 180 / Math.PI * Math.Atan(x);
 }
-{% endhighlight %}
+```
 
 Also note that I use the constants LAT (latitude), LON (longitude) and <a href="http://en.wikipedia.org/wiki/Zenith_distance">ZENITH</a>. latitude and longitude are simply the ones corresponding to your location (<a href="http://brainoff.com/geocoder/">lookup here</a>), and the standardised value for the zenith is given in the above algorithm link to be 90° 50', or 90.83333°. After some fiddling, I found that the above code in fact generated the same exact sunset time as the one printed in my local papers. With that done, I moved on to writing the plugin and tweaking the timer to display well on the LCD.

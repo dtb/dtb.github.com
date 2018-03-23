@@ -18,7 +18,7 @@ I wanted to be able to test the function which did the actual counting down, so 
 
 My <code>function1</code> looks like this:
 
-{% highlight c# %}
+```c#
 public string function1(string a, string b)
 {
 	DateTime sunset = Sunset(DateTime.Now);
@@ -29,7 +29,7 @@ public string function1(string a, string b)
 	//doing this subtraction returns a TimeSpan object, whose ToString method I call
 	return (sunset - DateTime.Now).ToString();
 }
-{% endhighlight %}
+```
 
 The return value of this function is a string representing the amount of time between now and sunset. If the sunset has already happened today (a very depressing turn of events indeed), it counts down till tomorrow's sunset.
 

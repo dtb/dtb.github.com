@@ -22,11 +22,11 @@ function connected(canvasId)
 	
 	function resetPoint(p)
 	{
-		p.x  = emitter.x + randBtwn(0, 200);
-		p.y  = emitter.y + randBtwn(0, 200);
+		p.x  = emitter.x + randBtwn(0, width / 2);
+		p.y  = emitter.y + randBtwn(0, height / 2);
 		p.vY = randBtwn(-height/300, height/300);
 		p.vX = randBtwn(-width/300, width/300);
-		p.radius = randBtwn(3, 25);
+		p.radius = randBtwn(6, 40);
 	}
 	
 	function initPoint()
@@ -43,7 +43,6 @@ function connected(canvasId)
 	}
 	
 	var MAX_DIST_2 = 100*100;
-	var circRadius = 4;//pix
 	function draw()
 	{
 		context.clearRect(0, 0, width, height);
@@ -80,6 +79,7 @@ function connected(canvasId)
 				var dirx = point.x > pt.x ? point.x : pt.x;
 				var diry = point.y < pt.y ? point.y : pt.y;
 				context.quadraticCurveTo(dirx, diry, pt.x, pt.y); 
+				context.lineWidth = 2;
 				context.strokeStyle = 'rgba(0,0,0,' + (1 - dist_2 / MAX_DIST_2) +' )'
 				ptCons[i][j] = 1;
 				ptCons[j][i] = 1;
@@ -87,6 +87,7 @@ function connected(canvasId)
 			context.stroke();
 			
 			context.beginPath();
+			context.lineWidth = 2;
 			context.arc(point.x, point.y, point.radius, 0, 2*Math.PI);
 			context.fillStyle='rgba(0,0,0,.7)'
 			context.fill();

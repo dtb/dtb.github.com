@@ -9,6 +9,7 @@ styles: ".canvasgroup {
 canvas {
 	border: 1px inset #999;
 	background:white;
+	width: 50%;
 }
 "
 ---
@@ -30,7 +31,7 @@ I made an array of points with a randomized x and y position. Then, using `setIn
 <div class="canvasgroup">
 
 	<div class="canvascontainer">
-			<canvas width="400" height="400" id="random"></canvas>
+			<canvas width="800" height="800" id="random"></canvas>
 	</div>
 	<script src="/canvas2/random.particles.js"> </script>
 	<script> 
@@ -49,7 +50,7 @@ example, I used the formula `x=.5*a*t^2+v0*t+x0`, where `x0` means the initial p
 the particles a randomized initial velocity. Once they hit the ground, they stay there.
 
 <div class="canvasgroup">
-	<div class="canvascontainer"><canvas width="400" height="400" id="falling"></canvas></div>
+	<div class="canvascontainer"><canvas width="800" height="800" id="falling"></canvas></div>
 	<script src="/canvas2/falling.particles.js"> </script>
 	<script> 
 		var fallingDrawing = falling("falling"); 
@@ -66,7 +67,7 @@ of calculating the position using a formula, I simply tracked the x and y veloci
 velocities. Then, I moved the particle `vX` and `vY` units each time step. 
 
 <div class="canvasgroup">
-	<div class="canvascontainer"><canvas width="400" height="400" id="bouncing"></canvas></div>
+	<div class="canvascontainer"><canvas width="800" height="800" id="bouncing"></canvas></div>
 	<script src="/canvas2/bouncing.particles.js"> </script>
 	<script> 
 		var bouncingDrawing = bouncy("bouncing"); 
@@ -84,7 +85,7 @@ y velocity. As they go off screen, the emitter recycles them, spewing them out a
 ugly black-border circles, so I changed to using filled circles of random radius, which actually look pretty nice.
 
 <div class="canvasgroup">
-	<div class="canvascontainer"><canvas width="400" height="400" id="emit"></canvas></div>
+	<div class="canvascontainer"><canvas width="800" height="800" id="emit"></canvas></div>
 	<script src="/canvas2/emitted.particles.js"> </script>
 	<script> 
 		var emitDrawing = emit("emit"); 
@@ -107,7 +108,7 @@ nearby points is done using a dumb `O(n^2)` search. I'd be intrigued if there's 
 are drawn between points using `drawQuadraticCurveTo` (2nd order b-splines!)
 
 <div class="canvasgroup">
-	<div class="canvascontainer"><canvas width="400" height="400" id="connect"></canvas></div>
+	<div class="canvascontainer"><canvas width="800" height="800" id="connect"></canvas></div>
 	<script src="/canvas2/connected.particles.js"> </script>
 	<script> 
 		var connectedDrawing = connected("connect"); 

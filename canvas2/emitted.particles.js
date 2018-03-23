@@ -25,7 +25,7 @@ function emit(canvasId)
 		p.y  = emitter.y;
 		p.vY = randBtwn(-3, 5);
 		p.vX = randBtwn(-3, 5);
-		p.radius = randBtwn(3, 6);
+		p.radius = randBtwn(6, 12);
 	}
 	
 	function initPoint()

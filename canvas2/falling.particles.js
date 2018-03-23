@@ -33,7 +33,7 @@ var falling = function(canvasId)
     	}
     }
 
-    var circRadius = 6;//pix
+    var circRadius = 12;//pix
     function draw()
     {
     	context.clearRect(0, 0, width, height);
@@ -41,6 +41,7 @@ var falling = function(canvasId)
     	for(i = 0; i < points.length; i++)
     	{
     		point = points[i];
+    		context.lineWidth = 2;
     		context.beginPath(point.x, point.y);
     		context.arc(point.x, point.y, circRadius, 0, 2*Math.PI);
     		context.stroke();

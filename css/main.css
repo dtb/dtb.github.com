@@ -1,0 +1,71 @@
+body {
+	background-color: #FFE1C9;
+	font-family: "Fira Mono", sans-serif;
+	padding: 0 5rem;
+	max-width: 900px;
+	color: #333;
+
+	--accent-color:#07E2B9;
+
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+	font-weight: 500;
+	color: var(--accent-color);
+}
+
+
+h1, .h1 {
+	font-family: "Fira Mono", sans-serif;
+	font-size: 2.25em;
+	margin: 3em 0 3em;
+}
+
+h1.mark > a,
+h1.mark > a:visited {
+	text-decoration:none;
+	color: var(--accent-color);
+	font-size: 2.6rem;
+}
+h1.mark > a:hover {
+	text-decoration: underline;
+}
+
+nav > ul {
+	padding: 0;
+	list-style-type: none;
+}
+
+nav > ul > li {
+	padding: .8rem 2rem 1.2rem;
+	margin-bottom: 1.8rem;
+	background: #E0F5FF;
+	border-top: .4rem solid #FFBABA;
+}
+
+nav h2 {
+	margin: 0;
+}
+
+nav > ul > li a {
+	color: var(--accent-color);
+}
+
+nav > ul > li a:visited {
+	color: #07E2B9;
+}
+
+footer {
+	font-size: .8rem;
+	color: #707070;
+	background-color: #E4FFFA;
+	padding: 1.2rem 2rem;
+	margin: 2.4rem 0 1rem;
+}
+
+

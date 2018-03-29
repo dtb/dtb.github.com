@@ -29,8 +29,8 @@ h2 {
 }
 
 article p {
-	line-height: 1.4;
-	font-size: 1.12rem;
+	line-height: 1.45;
+	font-size: 1.03rem;
 	color: #333;
 }
 
@@ -49,11 +49,11 @@ h1.mark {
 		text-decoration:none;
 		color: var(--text-color);
 
-		:visited {
+		&:visited {
 			color: var(--text-color);
 		}
 
-		:hover {
+		&:hover {
 			text-decoration: underline;
 		}
 	}

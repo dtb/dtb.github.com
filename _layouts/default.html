@@ -22,54 +22,15 @@
 			})();
 		</script>
 	</head>
-	<body>
+	<body class="layout-{{ page.layout|uri_escape }} page-{{ page.title|slugify|uri_escape }}">
 		<header>
 			<h1 class="mark">
 				<a href="/">David Thomas Bernal</a>
 			</h1>
 		</header>
-		{% if page.type == "post" %}
-			<article>
-				{{ content }}
-			</article>
-		{% else %}
-			<nav>
-				<ul>
-					{% for post in site.posts limit:6 %}
-						{% unless post.draft %}
-							{% if post.layout == "link" %}
-								<li class="post link-post">
-									<h2>
-										<a href="{{ post.link }}">{{ post.title }} →</a>
-									</h2>
-									{{ post.content }}
-								</li>
-							{% else %}
-								<li class="post content-post">
-									<h2>
-										<a href="{{ post.url }}">{{ post.title }}</a>
-									</h2>
-									<p>
-									{{ post.summary }}
-									</p>
-								</li>
-							{% endif %}
-						{% endunless %}
-					{% endfor %}
-					<li class="post content-post">
-						<h2><a href="http://unicodefor.us">UnicodeForUs →</a></h2>
-						<p>the open repository of fun unicode characters</p>
-					</li>
 
+		{{ content }}
 
-					<li class="post content-post">
-						<h2><a href="/canvas/one.html">Trees →</a></h2>
-						<p>lovely fractal trees that sway in a gentle breeze</p>
-					</li>
-				</ul>
-				<a href="/archive.html">See more articles</a>
-			</nav>
-		{% endif %}
 		<footer>
 			© 2018 David Thomas Bernal, which is who I am. If you’d like to say something nice or helpful or perhaps
 			ask a question, you can email me at david@davidthomasbernal.com. If you’d like to know what I’m thinking

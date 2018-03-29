@@ -1,5 +1,5 @@
 ---
-type: post
+layout: post
 title: Go to the source
 permalink: /blog/:year/:month/:day/:title
 summary: "It's not enough to read summaries and others' interpretations. Go to the source."

@@ -4,12 +4,17 @@
 
 body {
 	background-color: #FFE1C9;
-	font-family: "Fira Mono", sans-serif;
+	font-family: "Open Sans", sans-serif;
 	padding: 1rem 5rem;
 	max-width: 900px;
 	color: #333;
 
 	--accent-color:#07E2B9;
+
+}
+
+body.page-index {
+	font-family: "Fira Mono", monospace;
 }
 
 @for $i from 0 through 6 {
@@ -23,15 +28,23 @@ h2 {
 	font-size: 1.6rem;
 }
 
+article p {
+	line-height: 1.4;
+	font-size: 1.12rem;
+	color: #333;
+}
+
 
 .layout-post article h1,
 .page-index h1.mark {
 	font-size: 2.6rem;
 	margin: 7rem 0 8rem;
+	font-family: "Fira Mono", monospace;
 }
 
 h1.mark {
 	--text-color: var(--accent-color);
+	font-family: "Fira Mono", monospace;
 	a {
 		text-decoration:none;
 		color: var(--text-color);

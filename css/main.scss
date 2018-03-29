@@ -1,0 +1,95 @@
+---
+---
+@import "normalize";
+
+body {
+	background-color: #FFE1C9;
+	font-family: "Fira Mono", sans-serif;
+	padding: 1rem 5rem;
+	max-width: 900px;
+	color: #333;
+
+	--accent-color:#07E2B9;
+}
+
+@for $i from 0 through 6 {
+	h#{$i}, .h#{$i} {
+		font-weight: 500;
+		color: var(--accent-color);
+	}
+}
+
+h2 {
+	font-size: 1.6rem;
+}
+
+
+.layout-post article h1,
+.page-index h1.mark {
+	font-size: 2.6rem;
+	margin: 7rem 0 8rem;
+}
+
+h1.mark {
+	--text-color: var(--accent-color);
+	a {
+		text-decoration:none;
+		color: var(--text-color);
+
+		:visited {
+			color: var(--text-color);
+		}
+
+		:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+.layout-post {
+	h1.mark {
+		font-size: 1.2rem;
+		font-weight: normal;
+		--text-color: #aaa;
+	}
+
+}
+
+nav {
+	> ul {
+		padding: 0;
+		list-style-type: none;
+
+		> li {
+			--vertical-spacing: .9rem;
+			padding: var(--vertical-spacing) 2rem 0;
+			margin-bottom: 1.6rem;
+			background: #E0F5FF;
+			border-top: .5rem solid #FFBABA;
+
+			> h2 {
+				margin:0 0 var(--vertical-spacing);
+			}
+
+			> p {
+				margin: 0;
+				padding: 0 0 var(--vertical-spacing);
+			}
+			
+			a {
+				color: var(--accent-color);
+				&:visited {
+					color: inherit;
+				}
+			}
+		}
+	}
+}
+
+footer {
+	font-size: .8rem;
+	color: #707070;
+	background-color: #E4FFFA;
+	padding: 1.2rem 2rem;
+	margin: 2.4rem 0 1rem;
+}

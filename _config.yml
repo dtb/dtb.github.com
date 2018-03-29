@@ -1,2 +1,4 @@
 permalink: /:title
 highlighter: rouge
+sass:
+    style: compressed

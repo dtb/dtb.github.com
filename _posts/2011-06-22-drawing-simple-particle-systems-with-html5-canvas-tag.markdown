@@ -7,9 +7,9 @@ styles: ".canvasgroup {
 	text-align:center;
 }
 canvas {
-	border: 1px inset #999;
-	background:white;
+	border: 6px inset var(--accent-color);
 	width: 50%;
+	background-color: rgba(255,255,255,.6);
 }
 "
 ---

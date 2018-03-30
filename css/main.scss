@@ -3,14 +3,42 @@
 @import "normalize";
 
 body {
-	background-color: #FFE1C9;
+	background-color: #ffd8b8;
 	font-family: "Open Sans", sans-serif;
-	padding: 1rem 5rem;
+	padding: 1rem 7.5rem;
 	max-width: 900px;
 	color: #333;
 
-	--accent-color:#07E2B9;
+	--accent-color:#04e7bd;
 
+	--rainbow-purple: #FFC5F7;
+	--rainbow-red: #F9BFBF;
+	--rainbow-orange: #ffd0a3;
+	--rainbow-yellow: #FFF39F;
+	--rainbow-green: #DBFFD5;
+	--rainbow-blue: #E0F5FF;
+
+	--rainbow-border-red: #FFBABA;
+	--rainbow-border-orange: #FFC479;
+	--rainbow-border-yellow: #FFF39F;
+	--rainbow-border-green: #DBFFD5;
+	--rainbow-border-blue: #AAEAFF;
+	--rainbow-border-purple: #FFC5F7;
+
+	--rainbow-border1: var(--rainbow-border-blue);
+	--rainbow-border2: var(--rainbow-border-purple);
+	--rainbow-border3: var(--rainbow-border-red);
+	--rainbow-border4: var(--rainbow-border-orange);
+	--rainbow-border5: var(--rainbow-border-yellow);
+	--rainbow-border6: var(--rainbow-border-green);
+
+
+	--rainbow-background1: var(--rainbow-red);
+	--rainbow-background2: var(--rainbow-orange);
+	--rainbow-background3: var(--rainbow-yellow);
+	--rainbow-background4: var(--rainbow-green);
+	--rainbow-background5: var(--rainbow-blue);
+	--rainbow-background6: var(--rainbow-purple);
 }
 
 body.page-index {
@@ -21,6 +49,7 @@ body.page-index {
 	h#{$i}, .h#{$i} {
 		font-weight: 500;
 		color: var(--accent-color);
+		font-family: "fira mono", monospace;
 	}
 }
 
@@ -75,10 +104,13 @@ nav {
 
 		> li {
 			--vertical-spacing: .9rem;
-			padding: var(--vertical-spacing) 2rem 0;
-			margin-bottom: 1.6rem;
+			--icon-padding: 4.75rem;
+			padding: var(--vertical-spacing) 2rem 0 var(--icon-padding);
+			margin: 0 0 1.6rem calc(-1 * var(--icon-padding));
 			background: #E0F5FF;
 			border-top: .5rem solid #FFBABA;
+
+			--accent-color: #05d1ac;
 
 			> h2 {
 				margin:0 0 var(--vertical-spacing);
@@ -95,7 +127,15 @@ nav {
 					color: inherit;
 				}
 			}
+
+			@for $i from 1 through 6 {
+				&:nth-child(6n+#{$i}) {
+					background-color: var(--rainbow-background#{$i});
+					border-color: var(--rainbow-border#{$i});
+				}
+			}
 		}
+
 	}
 }
 

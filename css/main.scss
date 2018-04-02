@@ -3,7 +3,7 @@
 @import "normalize";
 
 body {
-	background-color: #ffd8b8;
+	background-color: #ffe2ca;
 	font-family: "Open Sans", sans-serif;
 	padding: 1rem 7.5rem;
 	max-width: 900px;
@@ -97,6 +97,7 @@ h1.mark {
 
 }
 
+// forgive me father for i have sinned
 nav {
 	> ul {
 		padding: 0;
@@ -105,26 +106,48 @@ nav {
 		> li {
 			--vertical-spacing: .9rem;
 			--icon-padding: 4.75rem;
-			padding: var(--vertical-spacing) 2rem 0 var(--icon-padding);
+			padding: 0 2rem 0 var(--icon-padding);
 			margin: 0 0 1.6rem calc(-1 * var(--icon-padding));
 			background: #E0F5FF;
 			border-top: .5rem solid #FFBABA;
 
 			--accent-color: #05d1ac;
 
-			> h2 {
-				margin:0 0 var(--vertical-spacing);
-			}
-
-			> p {
-				margin: 0;
-				padding: 0 0 var(--vertical-spacing);
-			}
-			
 			a {
 				color: var(--accent-color);
 				&:visited {
 					color: inherit;
+				}
+			}
+
+			.post-data {
+				padding: var(--vertical-spacing) 0 0;
+				position: relative;
+
+				> h2 {
+					margin:0 0 var(--vertical-spacing);
+				}
+
+				> p {
+					margin: 0;
+					padding: 0 0 var(--vertical-spacing);
+				}
+
+
+				.post-icon {
+					width: var(--icon-padding);
+					margin-left: calc(-1 * var(--icon-padding));
+
+					position: absolute;
+					top:50%;
+					transform: translateY(-50%);
+					text-align: center;
+					line-height: 0;
+
+					svg {
+						width: 2.8rem;
+						height: 2.8rem;
+					}
 				}
 			}
 

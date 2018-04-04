@@ -1,0 +1,13 @@
+<div class="post-icon">
+	<svg>
+		{% if include.category == "code" %}
+			<use xlink:href="#nc-code" />
+		{% elsif include.category == "art" %}
+			<use xlink:href="#nc-art" />
+		{% elsif include.category == "site" %}
+			<use xlink:href="#nc-internet" />
+		{% else %}
+			<use xlink:href="#nc-notebook" />
+		{% endif %}
+	</svg>
+</div>

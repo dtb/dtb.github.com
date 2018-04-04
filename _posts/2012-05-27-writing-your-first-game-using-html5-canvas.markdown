@@ -3,6 +3,7 @@ layout: post
 title: Writing your first game using html5 and canvas
 summary: "A lightweight structure for your html5 game that keeps you moving fast"
 permalink: /blog/:year/:month/:day/:title
+category: code
 styles: "
 article img {
     border:1px solid #CCC;

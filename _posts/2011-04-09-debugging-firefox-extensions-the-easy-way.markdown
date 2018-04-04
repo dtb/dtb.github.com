@@ -2,6 +2,7 @@
 layout: post
 title: Debugging Firefox Extensions the Easy Way
 summary: Quick and dirty debugging for Firefox extensions
+category: code
 permalink: /blog/:year/:month/:day/:title
 ---
 

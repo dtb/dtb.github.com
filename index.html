@@ -5,43 +5,39 @@ title: index
 <nav>
 	<ul>
 		{% for post in site.posts limit:6 %}
-			{% unless post.draft %}
-				{% if post.layout == "link" %}
-					<li class="post link-post">
+			{% if post.layout == "link" %}
+				<li class="post link-post">
+					<h2>
+						<a href="{{ post.link }}">{{ post.title }} →</a>
+					</h2>
+					{{ post.content }}
+				</li>
+			{% else %}
+				<li class="post content-post">
+					<div class="post-data">
+						{% include icon.html category=post.category %}
 						<h2>
-							<a href="{{ post.link }}">{{ post.title }} →</a>
+							<a href="{{ post.url }}">{{ post.title }}</a>
 						</h2>
-						{{ post.content }}
-					</li>
-				{% else %}
-					<li class="post content-post">
-						<div class="post-data">
-							<div class="post-icon">
-								<svg>
-									<use xlink:href="#nc-code" />
-								</svg>
-							</div>
-							<h2>
-								<a href="{{ post.url }}">{{ post.title }}</a>
-							</h2>
-							<p>
-								{{ post.summary }}
-							</p>
-						</div>
-					</li>
-				{% endif %}
-			{% endunless %}
+						<p>
+							{{ post.summary }}
+						</p>
+					</div>
+				</li>
+			{% endif %}
 		{% endfor %}
 		<li class="post content-post">
 			<div class="post-data">
+				{% include icon.html category="site" %}
 				<h2><a href="http://unicodefor.us">UnicodeForUs →</a></h2>
-				<p>the open repository of fun unicode characters</p>
+				<p>The open repository of fun unicode characters</p>
 			</div>
 		</li>
 
 
 		<li class="post content-post">
 			<div class="post-data">
+				{% include icon.html category="art" %}
 				<h2><a href="/canvas/one.html">Trees →</a></h2>
 				<p>lovely fractal trees that sway in a gentle breeze</p>
 			</div>

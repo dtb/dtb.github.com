@@ -3,6 +3,7 @@ layout: post
 title: Drawing Simple Particle Systems with HTML5's Canvas Tag
 summary: "Some fun, simple particle effects, done using javascript with 2-D canvas "
 permalink: /blog/:year/:month/:day/:title
+category: art
 styles: ".canvasgroup {
 	text-align:center;
 }

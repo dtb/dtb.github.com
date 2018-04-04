@@ -2,12 +2,14 @@
 layout: post
 title: Go to the source
 permalink: /blog/:year/:month/:day/:title
+category: essay
 summary: "It's not enough to read summaries and others' interpretations. Go to the source."
 ---
 
-# Go to the source
+{% include post-title.html title="Go to the source" icon=post.category %}
 
 <span class="pubdate">published 13 mar 2013</span>
+
 
 I recently read [a post][the_post] on Hacker News (HN) from a developer shutting down his
 side project of 2 years. This isn't about that developer, but the disappointing responses

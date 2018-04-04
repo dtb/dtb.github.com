@@ -1,6 +1,7 @@
 ---
 layout: post
 title: An LCD Sunset Timer in C#, Part 1
+category: code
 permalink: /blog/:year/:month/:day/:title
 ---
 

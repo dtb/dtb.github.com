@@ -9,6 +9,9 @@ body {
 	max-width: 900px;
 	color: #333;
 
+	line-height: 1.55;
+	font-size: 1.2rem;
+
 	--accent-color:#04e7bd;
 
 	--icon-padding: 4.75rem;
@@ -49,6 +52,10 @@ body.page-index {
 	font-family: "Fira Mono", monospace;
 }
 
+p {
+	margin-bottom: 2rem;
+}
+
 @for $i from 0 through 6 {
 	h#{$i}, .h#{$i} {
 		font-weight: 500;
@@ -59,12 +66,6 @@ body.page-index {
 
 h2 {
 	font-size: 1.6rem;
-}
-
-article p {
-	line-height: 1.55;
-	font-size: 1.3rem;
-	color: #333;
 }
 
 article h1 {
@@ -107,9 +108,13 @@ h1.mark {
 
 // forgive me father for i have sinned
 nav {
+	line-height: 1.15;
+	font-size: 1rem;
+
 	> ul {
 		padding: 0;
 		list-style-type: none;
+
 
 		> li {
 			--vertical-spacing: .9rem;

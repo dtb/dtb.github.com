@@ -19,7 +19,6 @@ canvas{
     height:551px;
     border:1px inset #ccc;
     position:relative;
-    margin-left:-190px;
 }
 #sample1 #shim {
     width:980px;

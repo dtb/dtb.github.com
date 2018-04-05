@@ -3,7 +3,14 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
-		<title>David Thomas Bernal—Tech Worker</title>
+		<title>
+			{% if page.title != "index" %}
+				{{page.title}}—David Thomas Bernal—Tech Worker
+			{% else %}
+				David Thomas Bernal—Tech Worker
+			{% endif %}
+			
+		</title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="/css/main.css">

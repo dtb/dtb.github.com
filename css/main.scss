@@ -37,6 +37,13 @@ p {
 	margin-bottom: 2rem;
 }
 
+.pubdate {
+	text-align: right;
+	display: block;
+	text-transform: capitalize;
+	font-style: italic;
+}
+
 @for $i from 0 through 6 {
 	h#{$i}, .h#{$i} {
 		font-weight: 500;

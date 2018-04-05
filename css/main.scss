@@ -3,7 +3,6 @@
 @import "normalize";
 
 body {
-	background-color: #ffe2ca;
 	font-family: "Open Sans", sans-serif;
 	padding: 1rem 7.5rem;
 	max-width: 900px;
@@ -16,36 +15,18 @@ body {
 
 	--icon-padding: 4.75rem;
 
-	//rb stands for rainbow. I abbreviated it bc it takes up
-	//so many dang bytes otherwise
-	--rb-purple: #FFC5F7;
-	--rb-red: #ffc3c3;
-	--rb-orange: #ffd0a3;
-	--rb-yellow: #FFF39F;
-	--rb-green: #DBFFD5;
-	--rb-blue: #E0F5FF;
+	$segments: 8;
+	$hue_dist: 360 / ($segments + 1);
 
-	--rb-br-red: #FFBABA;
-	--rb-br-orange: #FFC479;
-	--rb-br-yellow: #FFF39F;
-	--rb-br-green: #DBFFD5;
-	--rb-br-blue: #AAEAFF;
-	--rb-br-purple: #FFC5F7;
+	@for $i from 1 through $segments {
+		$hue: ($i - 1) * $hue_dist;
+		$border-hue: ($hue - 22.5) % 360;
 
-	--rb-br1: var(--rb-br-blue);
-	--rb-br2: var(--rb-br-purple);
-	--rb-br3: var(--rb-br-red);
-	--rb-br4: var(--rb-br-orange);
-	--rb-br5: var(--rb-br-yellow);
-	--rb-br6: var(--rb-br-green);
+		--rb-bg#{$i}: hsl(#{$hue}, 100%, 94%);
+		--rb-br#{$i}: hsl(#{$border-hue}, 91%, 88%);
+	}
 
-
-	--rb-bg1: var(--rb-red);
-	--rb-bg2: var(--rb-orange);
-	--rb-bg3: var(--rb-yellow);
-	--rb-bg4: var(--rb-green);
-	--rb-bg5: var(--rb-blue);
-	--rb-bg6: var(--rb-purple);
+	background-color: #fff9f5;
 }
 
 body.page-index {

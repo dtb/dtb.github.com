@@ -23,6 +23,7 @@
 				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 			})();
 		</script>
+		{% include favicons.html %}
 	</head>
 	<body class="layout-{{ page.layout|uri_escape }} page-{{ page.title|slugify|uri_escape }}">
 		<header>

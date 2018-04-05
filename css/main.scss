@@ -153,15 +153,15 @@ nav {
 	}
 }
 
-footer {
+footer, .footer {
 	font-size: .9rem;
 	line-height: 1.4;
 	color: #606060;
-	background-color: #E4FFFA;
+	background-color: rgba(255,255,255,.65);
 	--horizontal-padding: 2rem;
-	padding: 1.2rem var(--horizontal-padding);
+	padding: .6rem var(--horizontal-padding);
 	--horizontal-margin: 9rem;
-	margin: var(--horizontal-margin) 0 1rem;
+	margin: var(--horizontal-margin) 0 1rem calc(-1 * var(--horizontal-padding));
 	font-family: "Fira Mono", monospace;
 
 	a {

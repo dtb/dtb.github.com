@@ -1,5 +1,3 @@
-1. mobile
-1. accessibility audit
 2. SSL
 3. write new posts/rewrite go to the source
 4. disavow old posts

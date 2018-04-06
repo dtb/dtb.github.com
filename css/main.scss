@@ -21,7 +21,7 @@ body {
 
 	@for $i from 1 through $segments {
 		$hue: ($i - 1) * $hue_dist;
-		$border-hue: ($hue - 22.5) % 360;
+		$border-hue: ($hue - $hue_dist / 2) % 360;
 
 		--rb-bg#{$i}: hsl(#{$hue}, 100%, 94%);
 		--rb-br#{$i}: hsl(#{$border-hue}, 91%, 88%);
@@ -183,12 +183,17 @@ footer, .footer {
 	font-size: .9rem;
 	line-height: 1.4;
 	color: #606060;
-	background-color: rgba(255,255,255,.65);
+	background-color: #fff;
 	--horizontal-padding: 2rem;
 	padding: .6rem var(--horizontal-padding);
 	--horizontal-margin: 9rem;
 	margin: var(--horizontal-margin) 0 1rem calc(-1 * var(--horizontal-padding));
 	font-family: "Fira Mono", monospace;
+
+	p:last-child {
+		margin-bottom: 1rem;
+	}
+
 
 	a {
 		font-weight: bold;

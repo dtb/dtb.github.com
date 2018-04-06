@@ -1,6 +1,7 @@
 ---
 ---
 @import "normalize";
+@import "dtb_highlight";
 
 body {
 	font-family: "Open Sans", sans-serif;
@@ -26,7 +27,25 @@ body {
 		--rb-br#{$i}: hsl(#{$border-hue}, 91%, 88%);
 	}
 
+	@for $i from 1 through $segments {
+		$hue: ($i - 1) * $hue_dist;
+		$border-hue: ($hue - 22.5) % 360;
+
+		--rb-tx#{$i}: hsl(#{$hue}, 100%, 78%);
+		$color: hsl($hue, 100%, 78%);
+	}
+
 	background-color: #fff9f5;
+}
+
+pre.highlight {
+	padding: .75rem 1rem;
+	overflow: auto;
+}
+
+pre, code, kbd, samp {
+	font-family: "Fira Mono", monospace;
+	font-size: 1rem;
 }
 
 body.page-index {

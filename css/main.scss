@@ -5,7 +5,6 @@
 
 body {
 	font-family: "Open Sans", sans-serif;
-	padding: 1rem 7.5rem;
 	max-width: 900px;
 	color: #333;
 
@@ -15,6 +14,8 @@ body {
 	--accent-color:#04e7bd;
 
 	--icon-padding: 4.75rem;
+	--horizontal-padding: 2.75rem;
+	padding: 1rem var(--horizontal-padding) 1rem calc(var(--horizontal-padding) + var(--icon-padding));
 
 	$segments: 8;
 	$hue_dist: 360 / ($segments + 1);
@@ -25,17 +26,72 @@ body {
 
 		--rb-bg#{$i}: hsl(#{$hue}, 100%, 94%);
 		--rb-br#{$i}: hsl(#{$border-hue}, 91%, 88%);
-	}
-
-	@for $i from 1 through $segments {
-		$hue: ($i - 1) * $hue_dist;
-		$border-hue: ($hue - 22.5) % 360;
-
-		--rb-tx#{$i}: hsl(#{$hue}, 100%, 78%);
-		$color: hsl($hue, 100%, 78%);
+		/*--rb-tx#{$i}: hsl(#{$hue}, 100%, 78%);*/
 	}
 
 	background-color: #fff9f5;
+}
+
+@media screen and (max-width: 900px) {
+	body {
+		padding-left: 0;
+		padding-right: 0;
+
+		--content-padding: .3rem;
+
+		header {
+			padding-left: var(--content-padding);
+		}
+
+		nav > ul > li {
+			margin-left: 0;
+			margin-right: 0;
+			padding-left: var(--content-padding);
+			padding-right: var(--icon-padding);
+		}
+
+		.see-more-link {
+			padding-left: var(--content-padding);
+		}
+
+		.post-icon {
+			right: 0;
+			margin-left: 0;
+			margin-right: calc(-1 * var(--icon-padding));
+			text-align:left;
+
+			svg {
+				margin-left: 1rem;
+			}
+		}
+
+		--right-flush-padding: 1.2rem;
+
+		footer {
+			margin-left: 0;
+			margin-right: 0;
+			--horizontal-padding: var(--content-padding);
+			padding-right: var(--right-flush-padding);
+		}
+
+		&.layout-post >  article {
+			padding-left: var(--content-padding);
+			padding-right: var(--right-flush-padding);
+		}
+	}
+
+}
+
+@media screen and (max-width: 600px) {
+	body {
+		.post-icon {
+			display: none;
+		}
+
+		nav > ul > li {
+			padding-right: var(--content-padding);
+		}
+	}
 }
 
 pre.highlight {

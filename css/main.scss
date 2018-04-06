@@ -11,7 +11,7 @@ body {
 	line-height: 1.55;
 	font-size: 1.2rem;
 
-	--accent-color:#04e7bd;
+	--accent-color:#05caa5;
 
 	--icon-padding: 4.75rem;
 	--horizontal-padding: 2.75rem;
@@ -189,8 +189,6 @@ nav {
 			margin: 0 0 1.6rem calc(-1 * var(--icon-padding));
 			background: #E0F5FF;
 			border-top: .5rem solid #FFBABA;
-
-			--accent-color: #05d1ac;
 
 			a {
 				color: var(--accent-color);

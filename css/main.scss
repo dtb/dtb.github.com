@@ -29,7 +29,7 @@ body {
 		/*--rb-tx#{$i}: hsl(#{$hue}, 100%, 78%);*/
 	}
 
-	background-color: #fff9f5;
+	background: #fff9f5 url('/images/background.svg') repeat;
 }
 
 @media screen and (max-width: 900px) {
@@ -77,6 +77,11 @@ body {
 		&.layout-post >  article {
 			padding-left: var(--content-padding);
 			padding-right: var(--right-flush-padding);
+			margin-left: 0;
+
+			.post-icon {
+				display: none;
+			}
 		}
 	}
 
@@ -132,8 +137,14 @@ h2 {
 	font-size: 1.6rem;
 }
 
-article h1 {
-	position: relative;
+.layout-post article {
+	background-color: #FFF9F5;
+	padding: var(--horizontal-padding) var(--horizontal-padding) var(--horizontal-padding) var(--icon-padding);
+	margin-left: calc(-1 * var(--icon-padding));
+
+	h1 {
+		position: relative;
+	}
 }
 
 
